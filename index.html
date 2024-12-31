@@ -98,16 +98,26 @@
             border-radius: 5px;
         }
         .cta button {
-            padding: 10px 20px;
-            color: #fff;
+            padding: 12px 25px;
+            font-size: 1.2rem;
             background: #003366;
-            border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background 0.3s;
         }
         .cta button:hover {
             background: #00509e;
         }
+
+        /* Print-specific styles */
+        @media print {
+            img {
+                width: 210mm; /* A4 width */
+                height: 297mm; /* A4 height */
+                object-fit: contain;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -207,6 +217,7 @@
     </footer>
 </body>
 </html>
+
 
 
 
