@@ -58,12 +58,12 @@
             padding-left: 20px;
         }
         .projects img {
-            max-width: 100%; /* Make images responsive */
-            width: 100%; /* Ensure images scale down on smaller screens */
-            max-width: 400px; /* Set a reasonable max width */
-            height: auto;
+           width: 200px; /* Fixed width */
+            height: 200px; /* Fixed height */
+            object-fit: cover; /* Ensure the image covers the area without stretching */
+            border-radius: 10px; /* Optional: rounded corners */
             display: block;
-            margin: auto;
+            margin: 10px auto;
         }
         .cv-download {
             text-align: center;
