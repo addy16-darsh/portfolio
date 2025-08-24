@@ -16,7 +16,7 @@ index_data = {
         "projects": "/projects",
         "experience": "/experience",
         "contact": "/contact",
-        "download": "/static/balagopal.pdf"
+        "download": "/static/images/balagopal.pdf"
     }
 }
 
