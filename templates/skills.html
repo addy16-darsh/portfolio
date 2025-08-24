@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Skills | Balagopal Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #0f0f0f; color: #fff; margin:0; padding:2rem; }
+    h2 { text-align:center; margin-bottom:2rem; color:#fff; font-size:2rem; }  /* Main heading white */
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+    .card { background:#1a1a1a; border-radius:12px; padding:1.5rem; box-shadow:0 0 10px rgba(0,0,0,0.5); }
+    .card h3 { text-align:center; margin-bottom:1rem; color:#fff; font-size:1.3rem; }  /* Card headings white */
+
+    .skill-list { list-style:none; padding:0; margin:0; }
+    .skill-list li { margin-bottom:1.2rem; font-weight:500; }
+
+    .bar { background:#333; border-radius:6px; height:10px; overflow:hidden; margin-top:5px; }
+    .level { background:#ff6a3d; height:100%; border-radius:6px; }
+
+    .proficiency { font-size:0.9rem; color:#b2b2b2; margin-left:8px; }
+    .back-btn { display:inline-block; margin-bottom:1.5rem; color:#ff6a3d; border:1px solid #ff6a3d; padding:5px 10px; border-radius:4px; text-decoration:none; }
+    .back-btn:hover { background:#ff6a3d; color:#fff; }
+  </style>
+</head>
+<body>
+  <a class="btn back-btn" href="{{ url_for('index') }}">← Back to Home</a>
+
+  <h2>My Skills</h2>
+  <div class="grid">
+    <!-- Programming Languages -->
+    <div class="card">
+      <h3>Programming Languages</h3>
+      <ul class="skill-list">
+        <li>Python <span class="proficiency">(Proficient)</span>
+          <div class="bar"><div class="level" style="width: 95%"></div></div>
+        </li>
+        <li>Java <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 80%"></div></div>
+        </li>
+        <li>Dart <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 65%"></div></div>
+        </li>
+        <li>JavaScript <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 75%"></div></div>
+        </li>
+        <li>SQL <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 80%"></div></div>
+        </li>
+        <li>PHP <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 60%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- AI/ML -->
+    <div class="card">
+      <h3>AI / ML</h3>
+      <ul class="skill-list">
+        <li>TensorFlow <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 85%"></div></div>
+        </li>
+        <li>PyTorch <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 70%"></div></div>
+        </li>
+        <li>OpenCV <span class="proficiency">(Proficient)</span>
+          <div class="bar"><div class="level" style="width: 90%"></div></div>
+        </li>
+        <li>YOLOv8 <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 80%"></div></div>
+        </li>
+        <li>Scikit-learn <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 85%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- NLP -->
+    <div class="card">
+      <h3>NLP / NLU</h3>
+      <ul class="skill-list">
+        <li>Rasa <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 80%"></div></div>
+        </li>
+        <li>NLTK <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 65%"></div></div>
+        </li>
+        <li>SpaCy <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 60%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- App & Web Development -->
+    <div class="card">
+      <h3>App & Web Development</h3>
+      <ul class="skill-list">
+        <li>Flutter <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 75%"></div></div>
+        </li>
+        <li>Django <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 70%"></div></div>
+        </li>
+        <li>Flask <span class="proficiency">(Proficient)</span>
+          <div class="bar"><div class="level" style="width: 90%"></div></div>
+        </li>
+        <li>Firebase <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 65%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tools -->
+    <div class="card">
+      <h3>Tools & Platforms</h3>
+      <ul class="skill-list">
+        <li>GitHub <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 85%"></div></div>
+        </li>
+        <li>VS Code <span class="proficiency">(Proficient)</span>
+          <div class="bar"><div class="level" style="width: 95%"></div></div>
+        </li>
+        <li>Android Studio <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 65%"></div></div>
+        </li>
+        <li>Google Colab <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 85%"></div></div>
+        </li>
+        <li>Render <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 60%"></div></div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Languages -->
+    <div class="card">
+      <h3>Languages</h3>
+      <ul class="skill-list">
+        <li>English <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 85%"></div></div>
+        </li>
+        <li>Malayalam <span class="proficiency">(Intermediate)</span>
+          <div class="bar"><div class="level" style="width: 65%"></div></div>
+        </li>
+        <li>Hindi <span class="proficiency">(Advanced)</span>
+          <div class="bar"><div class="level" style="width: 85%"></div></div>
+        </li>
+        <li>Marathi <span class="proficiency">(Beginner)</span>
+          <div class="bar"><div class="level" style="width: 40%"></div></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

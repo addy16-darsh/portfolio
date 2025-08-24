@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balagopal | Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body, html {height:100%;margin:0;padding:0;background:#000;font-family:'Inter', Arial,sans-serif;color:#fff;overflow:hidden;}
+    .split-container {display:flex;height:100vh;width:100vw;}
+    .split-left, .split-right {flex:1;display:flex;align-items:center;justify-content:center;min-width:0;}
+    .split-left {flex-direction:column;align-items:flex-start;padding:0 3vw;}
+    .tagline {font-size:2.2rem;font-weight:800;margin-bottom:0.8em;line-height:1.18;letter-spacing:1px;color:#fff;}
+    .subheading {font-size:1.2rem;font-weight:700;margin-bottom:0.7em;color:#fff;}
+    .intro-role {font-size:1.2rem;font-weight:700;color:#ff6a3d;margin-bottom:1.2em;}
+    .intro-subtext {font-size:1rem;color:#b2eaff;margin-bottom:2.2em;opacity:0.8;}
+    .split-right {padding:0;margin:0;width:100%;height:100vh;justify-content:flex-end;align-items:stretch;background:#000;position:relative;overflow:hidden;}
+    .portrait-img {width:100%;height:100%;object-fit:cover;display:block;}
+    .terminal-section {width:100%;max-width:480px;background:#101010;border-radius:14px;box-shadow:0 0 32px #ff6a3d22;padding:2.5rem 2rem;font-family:'Fira Code','Consolas',monospace;color:#e0e0e0;font-size:1.18rem;position:relative;min-height:220px;margin:2.5rem 0;}
+    .terminal-label {color:#b2eaff;font-weight:600;margin-bottom:1.2rem;font-size:1.1rem;}
+    .terminal-input-row {display:flex;align-items:center;font-size:1.18rem;font-family:'Fira Code','Consolas',monospace;}
+    .terminal-prompt {color:#b2eaff;font-weight:600;margin-right:0.5em;}
+    .terminal-help { color:#b2eaff;font-size:1rem;margin-top:1.2em;font-weight:500;letter-spacing:0.5px; }
+    .terminal-error { color:#ff6a3d;font-size:1rem;margin-top:1.2em;font-weight:600;letter-spacing:0.5px; }
+    @keyframes blink {0%,50%{opacity:1;}51%,100%{opacity:0;}}
+    @keyframes fadeInInput {from{opacity:0;}to{opacity:1;}}
+  </style>
+</head>
+<body>
+  <div class="split-container">
+    <div class="split-left">
+      <div class="tagline">{{ data.tagline }}</div>
+      <div class="subheading">{{ data.intro_name }}</div>
+      <div class="intro-role">{{ data.intro_role }}</div>
+      <div class="intro-subtext">{{ data.intro_subtext }}</div>
+
+      <!-- Terminal Section -->
+      <div class="terminal-section">
+        <div class="terminal-label">Type a command and press Enter:</div>
+        <div id="terminal-output" class="terminal-output" style="min-height:1.5em;"></div>
+        <div class="terminal-input-row">
+          <span class="terminal-prompt">$</span>
+          <input id="terminal-input" class="terminal-input" autocomplete="off" autofocus style="background:transparent;border:none;outline:none;color:#ff6a3d;width:220px;">
+        </div>
+        <div style="color:#b2eaff;font-size:0.98rem;margin-top:1.1em;opacity:0.85;">
+          Type <span style="color:#ff6a3d;font-weight:600;">help</span> to display all available commands.
+        </div>
+        <div id="terminal-message"></div>
+      </div>
+    </div>
+
+    <div class="split-right">
+      <img src="{{ url_for('static', filename=data.portrait) }}" alt="Portrait" class="portrait-img">
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('terminal-input');
+    const output = document.getElementById('terminal-output');
+    const message = document.getElementById('terminal-message');
+    const commands = {{ data.commands|tojson }};
+    const helpMsg = 'Available commands: <span style="color:#ff6a3d">about</span>, <span style="color:#ff6a3d">skills</span>, <span style="color:#ff6a3d">projects</span>, <span style="color:#ff6a3d">experience</span>, <span style="color:#ff6a3d">contact</span>, <span style="color:#ff6a3d">download</span>, <span style="color:#ff6a3d">clear</span>. Type any command to navigate or download resume.';
+
+    input.addEventListener('keydown', function(e){
+      if(e.key==='Enter'){
+        const cmd=input.value.trim().toLowerCase();
+        output.innerHTML=`<span style="color:#ff6a3d;">$ ${cmd}</span>`;
+        if(cmd in commands){
+          message.innerHTML='';
+          if(cmd==='download'){ window.open(commands.download,'_blank'); }
+          else { setTimeout(()=>{document.body.style.opacity=0.2;setTimeout(()=>{window.location.href=commands[cmd];},350);},250);}
+        }else if(cmd==='help'){ message.innerHTML=`<div class="terminal-help">${helpMsg}</div>`; }
+        else if(cmd==='clear'){ output.innerHTML=''; message.innerHTML=''; }
+        else if(cmd===''){ message.innerHTML=''; }
+        else{ message.innerHTML=`<div class="terminal-error">Command not found. Type <span style="color:#ff6a3d">help</span>.</div>`; }
+        input.value='';
+      }
+    });
+  </script>
+</body>
+</html>

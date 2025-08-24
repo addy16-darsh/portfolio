@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>About | Balagopal Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #181c1f;
+      font-family: 'Fira Code', 'Consolas', monospace;
+      color: #e0ffe0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .about-header {
+      display: flex;
+      align-items: center;
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      background: none;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .about-header .icon {
+      font-size: 1.7rem;
+      margin-right: 0.7rem;
+      color: #7fffd4;
+      filter: drop-shadow(0 0 6px #7fffd4aa);
+    }
+    .about-header .back-btn {
+      background: #222;
+      color: #7fffd4;
+      border: none;
+      border-radius: 22px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      padding: 0.5em 1.4em;
+      margin-right: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+      box-shadow: 0 2px 12px #7fffd422;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+    }
+    .about-header .back-btn:hover, .about-header .back-btn:focus {
+      background: #222a;
+      box-shadow: 0 4px 24px #7fffd488;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .terminal-container {
+      max-width: 700px;
+      margin: 2.5rem auto 2rem auto;
+      background: #181c1f;
+      border-radius: 16px;
+      box-shadow: 0 0 32px #7fffd422;
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      font-size: 1.13rem;
+      position: relative;
+      min-height: 400px;
+      transition: box-shadow 0.3s;
+      overflow: hidden;
+    }
+    .typed-line {
+      opacity: 0;
+      animation: fadeInLine 0.7s forwards;
+      will-change: opacity, transform;
+      transform: translateY(10px);
+      margin-bottom: 0.7em;
+      color: #e0ffe0;
+      position: relative;
+    }
+    @keyframes fadeInLine {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .typed-cursor {
+      display: inline-block;
+      width: 1ch;
+      color: #7fffd4;
+      animation: blink 1s steps(1) infinite;
+      font-weight: 600;
+      font-size: 1.13rem;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    .back-to-top {
+      position: fixed;
+      right: 2vw;
+      bottom: 2vw;
+      background: #222;
+      color: #7fffd4;
+      border: none;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      font-size: 1.7rem;
+      box-shadow: 0 2px 16px #7fffd422;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.2s;
+      z-index: 100;
+      outline: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .back-to-top.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1.08);
+    }
+    .back-to-top:focus, .back-to-top:hover {
+      background: #222a;
+      box-shadow: 0 4px 24px #7fffd488;
+      transform: scale(1.15);
+    }
+    @media (max-width: 700px) {
+      .terminal-container {
+        max-width: 98vw;
+        padding: 1.2rem 0.7rem 1.2rem 0.7rem;
+        font-size: 1rem;
+      }
+      .about-header {
+        padding: 1rem 0.7rem 0.5rem 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="about-header">
+    <button class="back-btn" onclick="window.location.href='{{ url_for('index') }}'" aria-label="Back to Home">
+      ← Back
+    </button>
+    <span class="icon" aria-hidden="true">💻</span>
+    <span style="font-size:1.25rem;font-weight:700;color:#e0ffe0;">About Me</span>
+  </header>
+  <main>
+    <div class="terminal-container" id="terminal-container" tabindex="0" aria-label="About Section Terminal">
+      <!-- Lines will be typed here -->
+    </div>
+    <button class="back-to-top" id="backToTopBtn" aria-label="Back to Top">↑</button>
+  </main>
+  <script>
+    // Typing animation for lines
+    const lines = [
+      "$ whoami",
+      "Balagopal — Embedded Developer & AI Enthusiast",
+      "",
+      "$ summary",
+      "A Mumbaikar now residing in Kochi, blending my roots of energy and hustle with the calm of Kerala.",
+      "I specialize in machine learning, computer vision, and intelligent systems.",
+      "From deepfake detection with explainable AI to real-time fall monitoring and human-follower robotics, I thrive on solving complex problems with smart, practical solutions.",
+      "",
+      "$ skills",
+      "Languages: Python, Java, C",
+      "Frameworks: Flutter, Django",
+      "ML/AI: TensorFlow, PyTorch, Rasa",
+      "Tools: MySQL, OpenCV, Embedded Systems",
+      "",
+      "$ journey",
+      "B.Tech Electronics & Communication, Adi Shankara Institute of Engineering & Technology (2021–2025) | GPA 7.56/10",
+      "Senior Secondary, Saraswathi VidyaNikethan (2020–2021) – 88%",
+      "",
+      "$ personality",
+      "Curious, creative, collaborative, and always learning.",
+      "I find joy in traveling, playing cricket under the floodlights, capturing life through photography, vibing with music, staying active through sports, and spending time with friends.",
+      "",
+      "$ values",
+      "Karmanye Vaadhikaraste — Focus on effort, not just results.",
+      "Ethical behavior, continuous learning, and building meaningful connections.",
+      "",
+      "# This portfolio is not just a showcase of projects — it’s a journey of curiosity, innovation, friendships, and the experiences that shaped me."
+    ];
+
+    const container = document.getElementById('terminal-container');
+    let lineIdx = 0;
+
+    function typeLine(line, idx, callback) {
+      const lineDiv = document.createElement('div');
+      lineDiv.className = 'typed-line';
+      container.appendChild(lineDiv);
+
+      let charIdx = 0;
+      function typeChar() {
+        lineDiv.innerHTML = line.slice(0, charIdx) +
+          '<span class="typed-cursor">|</span>';
+        charIdx++;
+        if (charIdx <= line.length) {
+          setTimeout(typeChar, 22 + Math.random() * 28);
+        } else {
+          lineDiv.innerHTML = line; // Remove cursor after line is done
+          callback();
+        }
+      }
+      typeChar();
+    }
+
+    function typeAllLines() {
+      if (lineIdx < lines.length) {
+        typeLine(lines[lineIdx], lineIdx, () => {
+          lineIdx++;
+          setTimeout(typeAllLines, 180);
+        });
+      }
+    }
+
+    window.onload = function() {
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        document.body.style.transition = "opacity 0.7s";
+        document.body.style.opacity = 1;
+        typeAllLines();
+      }, 100);
+    };
+
+    // Back-to-top button logic
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      container.focus();
+    });
+
+    // Accessibility: focus indicators
+    container.addEventListener('focus', () => {
+      container.style.boxShadow = "0 0 0 3px #7fffd4";
+    });
+    container.addEventListener('blur', () => {
+      container.style.boxShadow = "0 0 32px #7fffd422";
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Experience | Balagopal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    /* Heading with underline glow */
+    h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 80px;              /* length of underline */
+  height: 4px;              /* thickness */
+  background: #ff6a3d;      /* underline color */
+  margin: 0.5rem auto 0;    /* center align */
+  border-radius: 2px;
+  box-shadow: 0 0 15px #ff6a3d; /* glow effect */
+}
+
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: #ff6a3d;
+      border: 1px solid #ff6a3d;
+      padding: 5px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .back-btn:hover {
+      background: #ff6a3d;
+      color: #fff;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px #ff6a3d;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.3rem;
+      color: #ff6a3d;
+      font-size: 1.3rem;
+    }
+
+    .company {
+      font-weight: 600;
+      color: #e0e0e0;
+      margin-bottom: 0.2rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <a href="{{ url_for('index') }}" class="back-btn">← Back to Home</a>
+  <h2>Experience</h2>
+
+  <div class="grid">
+    <!-- Full-Time Job -->
+    <div class="card">
+      <h3>Junior Python Developer</h3>
+      <div class="company">King’s Lab Innovation & Technology | Kochi</div>
+      <div class="meta">Full-Time • Aug 2025 – Present</div>
+      <ul>
+        <li>Developing a CRM chatbot using <b>Rasa</b> and <b>Django</b> for client engagement automation.</li>
+        <li>Designed NLP pipelines for intent classification and entity extraction.</li>
+        <li>Built backend actions in Python + MySQL for inquiry tracking and follow-up scheduling.</li>
+        <li>Learned enterprise-level development practices in an agile team.</li>
+      </ul>
+    </div>
+
+    <!-- Internship: Unified Mentor -->
+    <div class="card">
+      <h3>Full-Stack Development Intern</h3>
+      <div class="company">Unified Mentor | Remote</div>
+      <div class="meta">Jun 2025 – Jul 2025</div>
+      <ul>
+        <li>Built Hospital & Gym Management Systems using PHP and SQL.</li>
+        <li>Implemented authentication, CRUD operations, and responsive UI.</li>
+        <li>Worked on integrating Firebase for real-time updates.</li>
+      </ul>
+    </div>
+
+    <!-- Internship: CodeAlpha -->
+    <div class="card">
+      <h3>Python Programming Intern</h3>
+      <div class="company">CodeAlpha | Remote</div>
+      <div class="meta">Dec 2024</div>
+      <ul>
+        <li>Practiced Python scripting and clean coding practices.</li>
+        <li>Developed small-scale automation projects.</li>
+      </ul>
+    </div>
+
+    <!-- Internship: TechMaghi -->
+    <div class="card">
+      <h3>Embedded System & Robotics Intern</h3>
+      <div class="company">TechMaghi | Kakkanad</div>
+      <div class="meta">May 2023 – Jun 2023</div>
+      <ul>
+        <li>Learned Arduino programming and sensor integration.</li>
+        <li>Worked on robotics mini-projects for motion control.</li>
+      </ul>
+    </div>
+
+    <!-- Internship: Kodachy -->
+    <div class="card">
+      <h3>Robotics Intern</h3>
+      <div class="company">Kodachy | Remote</div>
+      <div class="meta">Feb 2023</div>
+      <ul>
+        <li>Explored robotics principles including automation basics.</li>
+        <li>Strengthened research and collaboration skills.</li>
+      </ul>
+    </div>
+
+    <!-- Internship: Insight for Innovation -->
+    <div class="card">
+      <h3>Social Work Intern (Teaching Team)</h3>
+      <div class="company">Insight for Innovation – Project Ganitam</div>
+      <div class="meta">Aug 2022</div>
+      <ul>
+        <li>Taught mathematics concepts to rural students as part of Project Ganitam.</li>
+        <li>Learned how to simplify technical knowledge for impactful teaching.</li>
+      </ul>
+    </div>
+
+    <!-- NSS Volunteer -->
+    <div class="card">
+      <h3>NSS Volunteer</h3>
+      <div class="company">Adi Shankara Institute of Engineering and Technology, Kalady</div>
+      <div class="meta">2022 – 2024</div>
+      <ul>
+        <li>Volunteered in community service programs and awareness campaigns.</li>
+        <li>Coordinated social initiatives, cleanliness drives, and blood donation camps.</li>
+        <li>Developed teamwork, leadership, and social responsibility skills.</li>
+      </ul>
+    </div>
+
+    <!-- IEEE SB ASIET -->
+    <div class="card">
+      <h3>IEEE SB Member</h3>
+      <div class="company">IEEE Student Branch, ASIET Kalady</div>
+      <div class="meta">2022 – 2024</div>
+      <ul>
+        <li>Active member of IEEE Student Branch at ASIET.</li>
+        <li>Participated in <b>Project Expo – IEEE YESS</b>.</li>
+        <li>Competed in <b>IEEE Xtreme 16.0 (2022)</b> global coding competition.</li>
+        <li>Gained exposure to global tech community and collaborative innovation.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
