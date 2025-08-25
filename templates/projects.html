@@ -44,7 +44,7 @@
   <!-- Modal -->
   <div class="modal" id="project-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">Back</button>
+      <button class="close-btn" onclick="closeModal()">× Close</button>
       
       <!-- Gallery -->
       <div id="gallery-container" class="gallery-container" style="display:none;">
@@ -63,55 +63,54 @@
       </video>
 
       <h3 id="modal-title"></h3>
-      <p id="modal-description"></p>
+      <div id="modal-description"></div>
     </div>
   </div>
 
   <script>
     const projects = {{ projects|tojson }};
-    const galleries = {
-      "Advanced Fracture And Tumor Detection System": [
-        "{{ url_for('static', filename='images/fracture1.jpg') }}",
-        "{{ url_for('static', filename='images/fracture2.jpg') }}",
-        "{{ url_for('static', filename='images/fracture3.jpg') }}"
-      ],
-      "Gym Management System": [
-        "{{ url_for('static', filename='images/gym1.png') }}",
-        "{{ url_for('static', filename='images/gym2.png') }}",
-        "{{ url_for('static', filename='images/gym3.png') }}",
-        "{{ url_for('static', filename='images/gym4.png') }}"
-      ],
-      "Hospital Management System": [
-        "{{ url_for('static', filename='images/h1.png') }}",
-        "{{ url_for('static', filename='images/h2.png') }}",
-        "{{ url_for('static', filename='images/h3.png') }}"
-      ]
-    };
-    const galleryCurrentIndex = {};
     let currentProjectIndex = null;
+    let currentGallery = [];
+    let galleryCurrentIndex = 0;
 
     function openModal(index) {
       currentProjectIndex = index;
       const proj = projects[index];
       document.getElementById("project-modal").classList.add("show");
 
-      // Title & Description
+      // Title
       document.getElementById("modal-title").textContent = proj.title;
-      document.getElementById("modal-description").textContent = proj.description || "";
 
-      // Gallery
-      if (galleries[proj.title]) {
-        galleryCurrentIndex[proj.title] = 0;
-        document.getElementById("gallery-img").src = galleries[proj.title][0];
-        document.getElementById("gallery-container").style.display = "block";
-        document.getElementById("single-img").style.display = "none";
-      } else if (proj.image) {
-        document.getElementById("single-img").src = `/static/${proj.image}`;
+      // Description / Details
+      const descEl = document.getElementById("modal-description");
+      descEl.innerHTML = "";
+      if (proj.details && proj.details.length > 0) {
+        const ul = document.createElement("ul");
+        proj.details.forEach(d => {
+          const li = document.createElement("li");
+          li.textContent = d;
+          ul.appendChild(li);
+        });
+        descEl.appendChild(ul);
+      } else if (proj.description) {
+        descEl.textContent = proj.description;
+      }
+
+      // Reset displays
+      document.getElementById("single-img").style.display = "none";
+      document.getElementById("gallery-container").style.display = "none";
+      document.getElementById("project-video").style.display = "none";
+
+      // Images
+      if (proj.img && proj.img.length === 1) {
+        document.getElementById("single-img").src = `/static/${proj.img[0]}`;
         document.getElementById("single-img").style.display = "block";
-        document.getElementById("gallery-container").style.display = "none";
-      } else {
-        document.getElementById("gallery-container").style.display = "none";
-        document.getElementById("single-img").style.display = "none";
+      } 
+      else if (proj.img && proj.img.length > 1) {
+        currentGallery = proj.img;
+        galleryCurrentIndex = 0;
+        document.getElementById("gallery-img").src = `/static/${currentGallery[0]}`;
+        document.getElementById("gallery-container").style.display = "block";
       }
 
       // Video
@@ -120,8 +119,6 @@
         const videoEl = document.getElementById("project-video");
         videoEl.style.display = "block";
         videoEl.load();
-      } else {
-        document.getElementById("project-video").style.display = "none";
       }
     }
 
@@ -131,23 +128,23 @@
     }
 
     function nextImage() {
-      const proj = projects[currentProjectIndex];
-      if (!galleries[proj.title]) return;
-      galleryCurrentIndex[proj.title] = (galleryCurrentIndex[proj.title] + 1) % galleries[proj.title].length;
-      document.getElementById("gallery-img").src = galleries[proj.title][galleryCurrentIndex[proj.title]];
+      if (currentGallery.length > 0) {
+        galleryCurrentIndex = (galleryCurrentIndex + 1) % currentGallery.length;
+        document.getElementById("gallery-img").src = `/static/${currentGallery[galleryCurrentIndex]}`;
+      }
     }
 
     function prevImage() {
-      const proj = projects[currentProjectIndex];
-      if (!galleries[proj.title]) return;
-      galleryCurrentIndex[proj.title] = (galleryCurrentIndex[proj.title] - 1 + galleries[proj.title].length) % galleries[proj.title].length;
-      document.getElementById("gallery-img").src = galleries[proj.title][galleryCurrentIndex[proj.title]];
+      if (currentGallery.length > 0) {
+        galleryCurrentIndex = (galleryCurrentIndex - 1 + currentGallery.length) % currentGallery.length;
+        document.getElementById("gallery-img").src = `/static/${currentGallery[galleryCurrentIndex]}`;
+      }
     }
 
     // Close modal on outside click
     window.addEventListener('click', (e) => {
       const modal = document.getElementById("project-modal");
-      if (e.target === modal) modal.classList.remove("show");
+      if (e.target === modal) closeModal();
     });
 
     // Close modal on Escape
