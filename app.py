@@ -169,7 +169,7 @@ def projects_page():
         },
         {
             "title": "Real Vs AI Generated Image Detection Using Machine Learning",
-            "images": "images/real.jpg",
+            "img": ["images/real.jpg"],   # FIXED (was "images")
             "details": [
                 "Built an image classifier with EfficientNet achieving 97% accuracy across 10 classes.",
                 "Improved detection reliability in single-object environments with future scope for multi-object and video deepfake detection."
@@ -178,7 +178,7 @@ def projects_page():
         },
         {
             "title": "Advanced Fracture And Tumor Detection System",
-            "images": [
+            "img": [  # FIXED
                 "images/fracture1.jpg",
                 "images/fracture2.jpg",
                 "images/fracture3.jpg"
@@ -191,7 +191,7 @@ def projects_page():
         },
         {
             "title": "Real-Time Fall Monitoring and Alert System",
-            "images": "images/fall.jpg",
+            "img": ["images/fall.jpg"],  # FIXED
             "details": [
                 "Developed a real-time fall detection system using YOLOv8 and posture angle analysis.",
                 "Implemented logic to monitor immobility for a customizable duration (e.g., 30 seconds) and integrated Twilio API to send emergency SMS alerts."
@@ -239,7 +239,7 @@ def projects_page():
         },
         {
             "title": "Hospital Management System",
-            "images": [
+            "img": [  # FIXED
                 "images/h1.png",
                 "images/h2.png",
                 "images/h3.png"
@@ -252,7 +252,7 @@ def projects_page():
         },
         {
             "title": "Gym Management System",
-            "images": [
+            "img": [  # FIXED
                 "images/gym1.png",
                 "images/gym2.png",
                 "images/gym3.png",
@@ -266,6 +266,7 @@ def projects_page():
         }
     ]
     return render_template("projects.html", projects=projects)
+
 
 @app.route("/experience")
 def experience_page():
