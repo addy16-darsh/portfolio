@@ -33,6 +33,24 @@
     .back-btn:hover { background:#ff6a3d; color:#fff; }
     /* Tech stack badges */
     .stack-badge { display:inline-block; background:#ff6a3d; color:#000; padding:3px 8px; margin:3px; border-radius:4px; font-size:0.9rem; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px;
+        background: transparent;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background-color: #ff6a3d;
+        border-radius: 5px;
+        border: 2px solid transparent;
+    }
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #ff6a3d transparent;
+    }
   </style>
 </head>
 <body>
