@@ -159,7 +159,7 @@ def projects_page():
     projects = [
         {
             "title": "Deepfake Video Detection System With Explainable AI",
-            "video": "videos/deepfake.MP4",
+            "video": "videos/deepfake.mp4",
             "details": [
                 "Trained and fine-tuned XceptionNet using transfer learning and early stopping, achieving high accuracy in detecting deepfakes.",
                 "Integrated Grad-CAM for XAI, enabling heatmap generation to highlight manipulated facial regions.",
@@ -200,7 +200,7 @@ def projects_page():
         },
         {
             "title": "Human Follower System",
-            "video": "videos/tracker.MP4",
+            "video": "videos/tracker.mp4",
             "details": [
                 "Built a real-time human tracking system by integrating YOLOv8 for person detection and MoveNet (TFLite) for pose estimation.",
                 "Implemented distance and steering angle estimation using camera calibration and shoulder keypoints.",
@@ -211,7 +211,7 @@ def projects_page():
         },
         {
             "title": "Executive CRM Chatbot",
-            "video": "videos/bot.MP4",
+            "video": "videos/bot.mp4",
             "details": [
                 "Developed and deployed an intelligent CRM chatbot using Rasa and Django to handle clients, inquiries, leads, orders, and follow-ups via natural conversations.",
                 "Designed and curated extensive NLU training data (intents, entities, stories) to improve intent classification and entity extraction accuracy.",
@@ -221,7 +221,7 @@ def projects_page():
         },
         {
             "title": "Finance Tracker Application",
-            "video": "videos/finance.MP4",
+            "video": "videos/finance.mp4",
             "details": [
                 "Developed an offline finance tracking application enabling users to manage budgets, expenses, and savings efficiently with local data storage through SQLite.",
                 "Implemented an alert and notification system for budget overages, with responsive UI/UX across devices."
@@ -230,7 +230,7 @@ def projects_page():
         },
         {
             "title": "LingoDefine – Flutter-Based Translator and Dictionary App",
-            "video": "videos/translator.MP4",
+            "video": "videos/translator.mp4",
             "details": [
                 "Developed a mobile app for translation and word definition with offline support.",
                 "Focused on cross-device UI responsiveness and real-time language switching."
