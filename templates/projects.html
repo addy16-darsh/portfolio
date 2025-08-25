@@ -20,9 +20,6 @@
     .modal-content { background:#222; padding:2rem; border-radius:12px; max-width:700px; width:90%; color:#fff; position:relative; max-height:90vh; overflow-y:auto; }
     .modal-content img, .modal-content video { width:100%; border-radius:8px; margin-bottom:1rem; }
     .modal-content h3 { margin-top:0; color:#ff6a3d; }
-    .modal-content ul { margin-left:1rem; margin-bottom:1rem; color:#fff; }
-    .modal-content .tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
-    .modal-content .tags span { background:#ff6a3d; color:#000; padding:2px 6px; border-radius:4px; font-size:0.8rem; }
     .close-btn { position:absolute; top:10px; right:15px; background:#ff6a3d; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; color:#000; font-weight:bold; }
     .gallery-container { position:relative; }
     .gallery-nav { position:absolute; top:50%; transform:translateY(-50%); font-size:2rem; color:#ff6a3d; background:rgba(0,0,0,0.5); border:none; padding:5px 10px; cursor:pointer; border-radius:4px; }
@@ -44,29 +41,29 @@
     {% endfor %}
   </div>
 
-  <!-- Single Reusable Modal -->
+  <!-- Modal -->
   <div class="modal" id="project-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal()">Back</button>
+      
+      <!-- Gallery -->
       <div id="gallery-container" class="gallery-container" style="display:none;">
         <img id="gallery-img" src="" alt="Project Image">
         <button class="gallery-nav prev" onclick="prevImage()">&#10094;</button>
         <button class="gallery-nav next" onclick="nextImage()">&#10095;</button>
       </div>
-      <div id="single-image-container">
-        <img id="single-img" src="" alt="Project Image" style="display:none;">
-      </div>
-      <div id="video-container">
-        <video id="project-video" controls style="display:none;">
-          <source id="video-src" src="" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
+
+      <!-- Single Image -->
+      <img id="single-img" src="" alt="Project Image" style="display:none;">
+
+      <!-- Video -->
+      <video id="project-video" controls style="display:none;">
+        <source id="video-src" src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
       <h3 id="modal-title"></h3>
-      <p style="font-weight:600; color:#fff;">Tech Stack:</p>
-      <div id="modal-tags" class="tags"></div>
-      <p style="font-weight:600; color:#fff;">Project Details:</p>
-      <ul id="modal-details"></ul>
+      <p id="modal-description"></p>
     </div>
   </div>
 
@@ -98,35 +95,18 @@
       const proj = projects[index];
       document.getElementById("project-modal").classList.add("show");
 
-      // Title
+      // Title & Description
       document.getElementById("modal-title").textContent = proj.title;
+      document.getElementById("modal-description").textContent = proj.description || "";
 
-      // Tech Stack
-      const tagsContainer = document.getElementById("modal-tags");
-      tagsContainer.innerHTML = "";
-      proj.stack.forEach(tag => {
-        const span = document.createElement("span");
-        span.textContent = tag;
-        tagsContainer.appendChild(span);
-      });
-
-      // Project Details
-      const detailsContainer = document.getElementById("modal-details");
-      detailsContainer.innerHTML = "";
-      proj.details.forEach(bullet => {
-        const li = document.createElement("li");
-        li.textContent = bullet;
-        detailsContainer.appendChild(li);
-      });
-
-      // Handle gallery
+      // Gallery
       if (galleries[proj.title]) {
         galleryCurrentIndex[proj.title] = 0;
         document.getElementById("gallery-img").src = galleries[proj.title][0];
         document.getElementById("gallery-container").style.display = "block";
         document.getElementById("single-img").style.display = "none";
-      } else if (proj.img && proj.img.length > 0) {
-        document.getElementById("single-img").src = `/static/${proj.img[0]}`;
+      } else if (proj.image) {
+        document.getElementById("single-img").src = `/static/${proj.image}`;
         document.getElementById("single-img").style.display = "block";
         document.getElementById("gallery-container").style.display = "none";
       } else {
@@ -134,7 +114,7 @@
         document.getElementById("single-img").style.display = "none";
       }
 
-      // Handle video
+      // Video
       if (proj.video) {
         document.getElementById("video-src").src = `/static/${proj.video}`;
         const videoEl = document.getElementById("project-video");
@@ -147,6 +127,7 @@
 
     function closeModal() {
       document.getElementById("project-modal").classList.remove("show");
+      document.getElementById("project-video").pause();
     }
 
     function nextImage() {
