@@ -33,14 +33,6 @@
       margin-bottom: 0.5em;
     }
 
-    /* Email Display */
-    #contact .email {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 1.5em;
-      font-weight: 600;
-    }
-
     #contact p.muted {
       font-size: 1.1rem;
       color: #b2eaff;
@@ -66,6 +58,7 @@
       border-radius: 8px;
       text-decoration: none;
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -85,11 +78,29 @@
     <h2>Let’s Connect</h2>
     <p class="muted">Looking forward to collaborating on impactful projects and exciting opportunities in Application Development, Software Engineering, or Machine Learning.</p>
     <div class="buttons">
-      <a class="btn" href="mailto:baluu1603@gmail.com">Email</a>
+      <!-- Smart Email Button -->
+      <a class="btn" href="#" id="email-btn">Email</a>
       <a class="btn" href="https://www.linkedin.com/in/balagopal-m-1b9a7b226?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">LinkedIn</a>
       <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
       <a class="btn" href="{{ url_for('static', filename='images/balagopal.pdf') }}" download>Resume</a>
     </div>
   </section>
+
+  <script>
+    document.getElementById('email-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const mailto = "mailto:baluu1603@gmail.com";
+      
+      // Try opening default mail client
+      const newWindow = window.open(mailto, '_self');
+
+      // Fallback: open Gmail web if no app available
+      setTimeout(() => {
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+          window.open("https://mail.google.com/mail/?view=cm&fs=1&to=baluu1603@gmail.com", "_blank");
+        }
+      }, 500);
+    });
+  </script>
 </body>
 </html>
