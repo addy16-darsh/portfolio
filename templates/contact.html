@@ -6,6 +6,9 @@
   <title>Contact | Balagopal Portfolio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body, html {
       height: 100%;
@@ -40,67 +43,65 @@
       opacity: 0.85;
     }
 
-    .buttons {
+    /* Icon buttons */
+    .social-links {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
       justify-content: center;
     }
 
-    .btn {
+    .social-links a {
+      width: 55px;
+      height: 55px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #ff6a3d;
+      transform: translateY(-4px);
+    }
+
+    .back-btn {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
+      margin-bottom: 2rem;
+      padding: 0.6rem 1.2rem;
       font-weight: 700;
       font-size: 1rem;
       color: #ff6a3d;
-      background: transparent;
       border: 2px solid #ff6a3d;
       border-radius: 8px;
       text-decoration: none;
       transition: all 0.3s ease;
-      cursor: pointer;
     }
 
-    .btn:hover {
+    .back-btn:hover {
       background: #ff6a3d;
       color: #fff;
       transform: translateY(-2px);
-    }
-
-    .back-btn {
-      margin-bottom: 2rem;
     }
   </style>
 </head>
 <body>
   <section id="contact">
-    <a class="btn back-btn" href="{{ url_for('index') }}">← Back to Home</a>
+    <a class="back-btn" href="{{ url_for('index') }}">← Back to Home</a>
     <h2>Let’s Connect</h2>
     <p class="muted">Looking forward to collaborating on impactful projects and exciting opportunities in Application Development, Software Engineering, or Machine Learning.</p>
-    <div class="buttons">
-      <!-- Smart Email Button -->
-      <a class="btn" href="#" id="email-btn">Email</a>
-      <a class="btn" href="https://www.linkedin.com/in/balagopal-m-1b9a7b226?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">LinkedIn</a>
-      <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
-      <a class="btn" href="{{ url_for('static', filename='images/balagopal.pdf') }}" download>Resume</a>
+    
+    <!-- Social Media Logos -->
+    <div class="social-links">
+      <a href="mailto:baluu1603@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/balagopal-m-1b9a7b226" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="{{ url_for('static', filename='images/balagopal.pdf') }}" download><i class="fas fa-file-pdf"></i></a>
     </div>
   </section>
-
-  <script>
-    document.getElementById('email-btn').addEventListener('click', function(e) {
-      e.preventDefault();
-      const mailto = "mailto:baluu1603@gmail.com";
-      
-      // Try opening default mail client
-      const newWindow = window.open(mailto, '_self');
-
-      // Fallback: open Gmail web if no app available
-      setTimeout(() => {
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-          window.open("https://mail.google.com/mail/?view=cm&fs=1&to=baluu1603@gmail.com", "_blank");
-        }
-      }, 500);
-    });
-  </script>
 </body>
 </html>
