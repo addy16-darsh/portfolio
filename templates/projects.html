@@ -34,22 +34,16 @@
     /* Tech stack badges */
     .stack-badge { display:inline-block; background:#ff6a3d; color:#000; padding:3px 8px; margin:3px; border-radius:4px; font-size:0.9rem; }
 
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 10px;
-        background: transparent;
-    }
-    ::-webkit-scrollbar-track {
-        background: transparent;
-    }
+    /* Remove all custom scrollbar styling */
+    ::-webkit-scrollbar, 
+    ::-webkit-scrollbar-track, 
     ::-webkit-scrollbar-thumb {
-        background-color: #ff6a3d;
-        border-radius: 5px;
-        border: 2px solid transparent;
+        all: unset;
     }
+
     * {
-        scrollbar-width: thin;
-        scrollbar-color: #ff6a3d transparent;
+        scrollbar-width: auto;
+        scrollbar-color: auto;
     }
   </style>
 </head>
