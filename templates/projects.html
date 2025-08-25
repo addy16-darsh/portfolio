@@ -2,183 +2,104 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Projects | Balagopal Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Balagopal Portfolio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; background-color: #0f0f0f; color: #fff; margin:0; padding:2rem; }
-    h2 { text-align:center; margin-bottom:2rem; color:#fff; } /* Main title white */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .card { 
-      background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; 
-      display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:1rem;
-      min-height:150px;
-      transition: transform 0.2s, box-shadow 0.2s; 
-    }
-    .card:hover { transform: scale(1.03); box-shadow: 0 0 15px #ff6a3d; }
-    .card h3 { margin:0 0 0.5rem 0; color:#fff; font-size:1.1rem; } /* Card headings white */
-    .card ul { margin:0; padding-left:1.2rem; list-style: disc; font-size:0.9rem; color:#fff; }
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; z-index:10; overflow:auto; opacity:0; transition: opacity 0.3s ease; }
-    .modal.show { display:flex; opacity:1; }
-    .modal-content { background:#222; padding:2rem; border-radius:12px; max-width:700px; width:90%; color:#fff; position:relative; max-height:90vh; overflow-y:auto; }
-    .modal-content img, .modal-content video { width:100%; border-radius:8px; margin-bottom:1rem; }
-    .modal-content h3 { margin-top:0; color:#ff6a3d; }
-    .modal-content h4 { margin-bottom:0.5rem; color:#ff6a3d; }
-    .modal-content ul { list-style: disc; padding-left:1.5rem; margin-top:0; }
-    .close-btn { position:absolute; top:10px; right:15px; background:#ff6a3d; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; color:#000; font-weight:bold; }
-    .gallery-container { position:relative; }
-    .gallery-nav { position:absolute; top:50%; transform:translateY(-50%); font-size:2rem; color:#ff6a3d; background:rgba(0,0,0,0.5); border:none; padding:5px 10px; cursor:pointer; border-radius:4px; }
-    .prev { left:5px; }
-    .next { right:5px; }
-    .back-btn { display:inline-block; margin-bottom:1.5rem; color:#ff6a3d; border:1px solid #ff6a3d; padding:5px 10px; border-radius:4px; text-decoration:none; }
-    .back-btn:hover { background:#ff6a3d; color:#fff; }
-    .stack-badge { display:inline-block; background:#ff6a3d; color:#000; padding:3px 8px; margin:3px; border-radius:4px; font-size:0.9rem; }
-
-    /* Completely native scrollbars */
-    ::-webkit-scrollbar, 
-    ::-webkit-scrollbar-track, 
-    ::-webkit-scrollbar-thumb {
-        all: unset;
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #000;
+      font-family: 'Inter', Arial, sans-serif;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
     }
 
-    * {
-        scrollbar-width: auto; /* Firefox */
-        scrollbar-color: auto;  /* Firefox */
+    #contact {
+      text-align: center;
+      max-width: 700px;
+      padding: 2rem;
+    }
+
+    #contact h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    #contact p.muted {
+      font-size: 1.1rem;
+      color: #b2eaff;
+      margin-bottom: 2em;
+      opacity: 0.85;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ff6a3d;
+      background: transparent;
+      border: 2px solid #ff6a3d;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #ff6a3d;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    .back-btn {
+      margin-bottom: 2rem;
     }
   </style>
 </head>
 <body>
-  <a class="btn back-btn" href="{{ url_for('index') }}">← Back to Home</a>
-  <h2>Projects</h2>
-
-  <div class="grid">
-    {% for proj in projects %}
-      <div class="card" onclick="openModal({{ loop.index0 }})">
-        <h3>{{ proj.title }}</h3>
-        {% if proj.details %}
-          <ul>
-            {% for detail in proj.details %}
-              <li>{{ detail }}</li>
-            {% endfor %}
-          </ul>
-        {% elif proj.description %}
-          <p>{{ proj.description }}</p>
-        {% endif %}
-      </div>
-    {% endfor %}
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="project-modal" role="dialog" aria-modal="true">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">× Close</button>
-      
-      <div id="gallery-container" class="gallery-container" style="display:none;">
-        <img id="gallery-img" src="" alt="Project Image">
-        <button class="gallery-nav prev" onclick="prevImage()">&#10094;</button>
-        <button class="gallery-nav next" onclick="nextImage()">&#10095;</button>
-      </div>
-
-      <img id="single-img" src="" alt="Project Image" style="display:none;">
-
-      <video id="project-video" controls style="display:none;">
-        <source id="video-src" src="" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-
-      <h3 id="modal-title"></h3>
-      <div id="modal-description"></div>
-
-      <h4>Tech Stack:</h4>
-      <div id="modal-stack"></div>
+  <section id="contact">
+    <a class="btn back-btn" href="{{ url_for('index') }}">← Back to Home</a>
+    <h2>Let’s Connect</h2>
+    <p class="muted">Looking forward to collaborating on impactful projects and exciting opportunities in Application Development, Software Engineering, or Machine Learning.</p>
+    <div class="buttons">
+      <!-- Smart Email Button -->
+      <a class="btn" href="#" id="email-btn">Email</a>
+      <a class="btn" href="https://www.linkedin.com/in/balagopal-m-1b9a7b226?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+      <a class="btn" href="{{ url_for('static', filename='images/balagopal.pdf') }}" download>Resume</a>
     </div>
-  </div>
+  </section>
 
   <script>
-    const projects = {{ projects|tojson }};
-    let currentProjectIndex = null;
-    let currentGallery = [];
-    let galleryCurrentIndex = 0;
+    document.getElementById('email-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      const mailto = "mailto:baluu1603@gmail.com";
+      
+      // Try opening default mail client
+      const newWindow = window.open(mailto, '_self');
 
-    function openModal(index) {
-      currentProjectIndex = index;
-      const proj = projects[index];
-      document.getElementById("project-modal").classList.add("show");
-
-      document.getElementById("modal-title").textContent = proj.title;
-
-      const descEl = document.getElementById("modal-description");
-      descEl.innerHTML = "";
-      if (proj.details && proj.details.length > 0) {
-        const ul = document.createElement("ul");
-        proj.details.forEach(d => {
-          const li = document.createElement("li");
-          li.textContent = d;
-          ul.appendChild(li);
-        });
-        descEl.appendChild(ul);
-      } else if (proj.description) {
-        descEl.textContent = proj.description;
-      }
-
-      const stackEl = document.getElementById("modal-stack");
-      stackEl.innerHTML = "";
-      if (proj.stack && proj.stack.length > 0) {
-        proj.stack.forEach(tech => {
-          const span = document.createElement("span");
-          span.classList.add("stack-badge");
-          span.textContent = tech;
-          stackEl.appendChild(span);
-        });
-      }
-
-      document.getElementById("single-img").style.display = "none";
-      document.getElementById("gallery-container").style.display = "none";
-      document.getElementById("project-video").style.display = "none";
-
-      if (proj.img && proj.img.length === 1) {
-        document.getElementById("single-img").src = `/static/${proj.img[0]}`;
-        document.getElementById("single-img").style.display = "block";
-      } else if (proj.img && proj.img.length > 1) {
-        currentGallery = proj.img;
-        galleryCurrentIndex = 0;
-        document.getElementById("gallery-img").src = `/static/${currentGallery[0]}`;
-        document.getElementById("gallery-container").style.display = "block";
-      }
-
-      if (proj.video) {
-        document.getElementById("video-src").src = `/static/${proj.video}`;
-        const videoEl = document.getElementById("project-video");
-        videoEl.style.display = "block";
-        videoEl.load();
-      }
-    }
-
-    function closeModal() {
-      document.getElementById("project-modal").classList.remove("show");
-      document.getElementById("project-video").pause();
-    }
-
-    function nextImage() {
-      if (currentGallery.length > 0) {
-        galleryCurrentIndex = (galleryCurrentIndex + 1) % currentGallery.length;
-        document.getElementById("gallery-img").src = `/static/${currentGallery[galleryCurrentIndex]}`;
-      }
-    }
-
-    function prevImage() {
-      if (currentGallery.length > 0) {
-        galleryCurrentIndex = (galleryCurrentIndex - 1 + currentGallery.length) % currentGallery.length;
-        document.getElementById("gallery-img").src = `/static/${currentGallery[galleryCurrentIndex]}`;
-      }
-    }
-
-    window.addEventListener('click', (e) => {
-      const modal = document.getElementById("project-modal");
-      if (e.target === modal) closeModal();
-    });
-
-    window.addEventListener('keydown', (e) => {
-      if (e.key === "Escape") closeModal();
+      // Fallback: open Gmail web if no app available
+      setTimeout(() => {
+        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+          window.open("https://mail.google.com/mail/?view=cm&fs=1&to=baluu1603@gmail.com", "_blank");
+        }
+      }, 500);
     });
   </script>
 </body>
