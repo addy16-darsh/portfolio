@@ -5,53 +5,165 @@
   <title>Projects | Balagopal Portfolio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <style>
-    body { font-family: Arial, sans-serif; background-color: #0f0f0f; color: #fff; margin:0; padding:2rem; }
-    h2 { text-align:center; margin-bottom:2rem; color:#fff; } /* Main title white */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-    .card { 
-      background: #1a1a1a; border-radius: 12px; overflow: hidden; cursor: pointer; 
-      display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-start; padding:1rem;
-      min-height:150px;
-      transition: transform 0.2s, box-shadow 0.2s; 
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+      margin:0;
+      padding:2rem;
     }
-    .card:hover { transform: scale(1.03); box-shadow: 0 0 15px #ff6a3d; }
-    .card h3 { margin:0 0 0.5rem 0; color:#fff; font-size:1.1rem; } /* Card headings white */
-    .card ul { margin:0; padding-left:1.2rem; list-style: disc; font-size:0.9rem; color:#fff; }
-    .modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); justify-content:center; align-items:center; z-index:10; overflow:auto; opacity:0; transition: opacity 0.3s ease; }
-    .modal.show { display:flex; opacity:1; }
-    .modal-content { background:#222; padding:2rem; border-radius:12px; max-width:700px; width:90%; color:#fff; position:relative; max-height:90vh; overflow-y:auto; }
-    .modal-content img, .modal-content video { width:100%; border-radius:8px; margin-bottom:1rem; }
-    .modal-content h3 { margin-top:0; color:#ff6a3d; }
-    .modal-content h4 { margin-bottom:0.5rem; color:#ff6a3d; }
-    .modal-content ul { list-style: disc; padding-left:1.5rem; margin-top:0; }
-    .close-btn { position:absolute; top:10px; right:15px; background:#ff6a3d; border:none; padding:5px 10px; border-radius:4px; cursor:pointer; color:#000; font-weight:bold; }
-    .gallery-container { position:relative; }
-    .gallery-nav { position:absolute; top:50%; transform:translateY(-50%); font-size:2rem; color:#ff6a3d; background:rgba(0,0,0,0.5); border:none; padding:5px 10px; cursor:pointer; border-radius:4px; }
+    h2 {
+      text-align:center;
+      margin-bottom:2rem;
+      color:#fff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:flex-start;
+      padding:1rem;
+      min-height:150px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 15px #ff6a3d;
+    }
+    .card h3 {
+      margin:0 0 0.5rem 0;
+      color:#ff6a3d;
+      font-size:1.1rem;
+    }
+    .card ul {
+      margin:0;
+      padding-left:1.2rem;
+      list-style: disc;
+      font-size:0.9rem;
+      color:#fff;
+    }
+    .modal {
+      display:none;
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.95);
+      justify-content:center;
+      align-items:center;
+      z-index:10;
+      overflow:auto;
+      opacity:0;
+      transition: opacity 0.3s ease;
+    }
+    .modal.show {
+      display:flex;
+      opacity:1;
+    }
+    .modal-content {
+      background:#222;
+      padding:2rem;
+      border-radius:12px;
+      max-width:700px;
+      width:90%;
+      color:#fff;
+      position:relative;
+      max-height:90vh;
+      overflow-y:auto;
+    }
+    .modal-content img, .modal-content video {
+      width:100%;
+      border-radius:8px;
+      margin-bottom:1rem;
+    }
+    .modal-content h3 {
+      margin-top:0;
+      color:#ff6a3d;
+    }
+    .modal-content h4 {
+      margin-bottom:0.5rem;
+      color:#ff6a3d;
+    }
+    .modal-content ul {
+      list-style: disc;
+      padding-left:1.5rem;
+      margin-top:0;
+    }
+    .close-btn {
+      position:absolute;
+      top:10px;
+      right:15px;
+      background:#ff6a3d;
+      border:none;
+      padding:5px 10px;
+      border-radius:4px;
+      cursor:pointer;
+      color:#000;
+      font-weight:bold;
+    }
+    .gallery-container {
+      position:relative;
+    }
+    .gallery-nav {
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      font-size:2rem;
+      color:#ff6a3d;
+      background:rgba(0,0,0,0.5);
+      border:none;
+      padding:5px 10px;
+      cursor:pointer;
+      border-radius:4px;
+    }
     .prev { left:5px; }
     .next { right:5px; }
-    .back-btn { display:inline-block; margin-bottom:1.5rem; color:#ff6a3d; border:1px solid #ff6a3d; padding:5px 10px; border-radius:4px; text-decoration:none; }
-    .back-btn:hover { background:#ff6a3d; color:#fff; }
-
-    /* Tech stack badges back to orange */
-    .stack-badge { display:inline-block; background:#ff6a3d; color:#000; padding:3px 8px; margin:3px; border-radius:4px; font-size:0.9rem; }
-
-    /* Completely native scrollbars */
-    ::-webkit-scrollbar, 
-    ::-webkit-scrollbar-track, 
-    ::-webkit-scrollbar-thumb {
-        all: unset;
+    .back-btn {
+      display:inline-block;
+      margin-bottom:1.5rem;
+      color:#ff6a3d;
+      border:1px solid #ff6a3d;
+      padding:5px 10px;
+      border-radius:4px;
+      text-decoration:none;
     }
-
+    .back-btn:hover {
+      background:#ff6a3d;
+      color:#fff;
+    }
+    /* Tech stack badges */
+    .stack-badge {
+      display:inline-block;
+      background:#ff6a3d;
+      color:#000;
+      padding:3px 8px;
+      margin:3px;
+      border-radius:4px;
+      font-size:0.9rem;
+    }
+    /* Completely native scrollbars */
+    ::-webkit-scrollbar, ::-webkit-scrollbar-track, ::-webkit-scrollbar-thumb {
+      all: unset;
+    }
     * {
-        scrollbar-width: auto; /* Firefox */
-        scrollbar-color: auto;  /* Firefox */
+      scrollbar-width: auto; /* Firefox */
+      scrollbar-color: auto; /* Firefox */
     }
   </style>
 </head>
 <body>
   <a class="btn back-btn" href="{{ url_for('index') }}">← Back to Home</a>
   <h2>Projects</h2>
-
   <div class="grid">
     {% for proj in projects %}
       <div class="card" onclick="openModal({{ loop.index0 }})">
@@ -73,15 +185,18 @@
   <div class="modal" id="project-modal" role="dialog" aria-modal="true">
     <div class="modal-content">
       <button class="close-btn" onclick="closeModal()">× Close</button>
-      
+
+      <!-- Gallery -->
       <div id="gallery-container" class="gallery-container" style="display:none;">
         <img id="gallery-img" src="" alt="Project Image">
         <button class="gallery-nav prev" onclick="prevImage()">&#10094;</button>
         <button class="gallery-nav next" onclick="nextImage()">&#10095;</button>
       </div>
 
+      <!-- Single Image -->
       <img id="single-img" src="" alt="Project Image" style="display:none;">
 
+      <!-- Video -->
       <video id="project-video" controls style="display:none;">
         <source id="video-src" src="" type="video/mp4">
         Your browser does not support the video tag.
@@ -89,7 +204,6 @@
 
       <h3 id="modal-title"></h3>
       <div id="modal-description"></div>
-
       <h4>Tech Stack:</h4>
       <div id="modal-stack"></div>
     </div>
@@ -106,8 +220,10 @@
       const proj = projects[index];
       document.getElementById("project-modal").classList.add("show");
 
+      // Title
       document.getElementById("modal-title").textContent = proj.title;
 
+      // Description / Details
       const descEl = document.getElementById("modal-description");
       descEl.innerHTML = "";
       if (proj.details && proj.details.length > 0) {
@@ -122,6 +238,7 @@
         descEl.textContent = proj.description;
       }
 
+      // Tech Stack
       const stackEl = document.getElementById("modal-stack");
       stackEl.innerHTML = "";
       if (proj.stack && proj.stack.length > 0) {
@@ -133,10 +250,12 @@
         });
       }
 
+      // Reset displays
       document.getElementById("single-img").style.display = "none";
       document.getElementById("gallery-container").style.display = "none";
       document.getElementById("project-video").style.display = "none";
 
+      // Images
       if (proj.img && proj.img.length === 1) {
         document.getElementById("single-img").src = `/static/${proj.img[0]}`;
         document.getElementById("single-img").style.display = "block";
@@ -147,6 +266,7 @@
         document.getElementById("gallery-container").style.display = "block";
       }
 
+      // Video
       if (proj.video) {
         document.getElementById("video-src").src = `/static/${proj.video}`;
         const videoEl = document.getElementById("project-video");
@@ -174,11 +294,13 @@
       }
     }
 
+    // Close modal on outside click
     window.addEventListener('click', (e) => {
       const modal = document.getElementById("project-modal");
       if (e.target === modal) closeModal();
     });
 
+    // Close modal on Escape
     window.addEventListener('keydown', (e) => {
       if (e.key === "Escape") closeModal();
     });
