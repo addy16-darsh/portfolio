@@ -55,19 +55,14 @@ journey_data = {
 "personality": {
     "intro": "I believe learning never stops, and my passions outside technology play a big role in who I am.",
     "items": [
-        " Cricket – I’ve been passionate about cricket since childhood and have represented my district in U-16 and U-19 tournaments. 
-        Playing at this level taught me not just discipline and fitness, but also leadership, resilience, and the importance of teamwork. 
-        Every match reinforced lessons about strategy, focus under pressure, and bouncing back from setbacks — qualities that I carry
-        into my professional life as well.",
-        " Travel – Traveling is my way of breaking boundaries and exploring perspectives. Each journey introduces me to new cultures,
-        lifestyles, and stories, broadening my worldview. It reminds me that creativity often comes from stepping outside comfort zones 
-        and embracing diversity. Whether it’s exploring the local streets of Kerala or discovering places beyond, I see travel as a way 
-        to constantly learn, adapt, and grow.",
-        " Photography – For me, photography is more than a hobby; it’s a way of slowing down and observing the world closely. 
-        I enjoy capturing the beauty of everyday life — from fleeting expressions to landscapes and details often overlooked.
-        Photography has taught me patience, observation, and storytelling, all of which influence the way I design and approach
-        my work in technology"
+        "Cricket – I’ve been passionate about cricket since childhood and have represented my district in U-16 and U-19 tournaments. Playing at this level taught me not just discipline and fitness, but also leadership, resilience, and the importance of teamwork. Every match reinforced lessons about strategy, focus under pressure, and bouncing back from setbacks — qualities that I carry into my professional life as well.",
+        
+        "Travel – Traveling is my way of breaking boundaries and exploring perspectives. Each journey introduces me to new cultures, lifestyles, and stories, broadening my worldview. It reminds me that creativity often comes from stepping outside comfort zones and embracing diversity. Whether it’s exploring the local streets of Kerala or discovering places beyond, I see travel as a way to constantly learn, adapt, and grow.",
+        
+        "Photography – For me, photography is more than a hobby; it’s a way of slowing down and observing the world closely. I enjoy capturing the beauty of everyday life — from fleeting expressions to landscapes and details often overlooked. Photography has taught me patience, observation, and storytelling, all of which influence the way I design and approach my work in technology."
     ],
+
+
     "outro": "These interests not only balance my life but also bring unique dimensions to my creativity as a developer."
 }
 
