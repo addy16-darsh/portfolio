@@ -59,7 +59,7 @@ journey_data = {
         
         "Travel – Traveling is my way of breaking boundaries and exploring perspectives. Each journey introduces me to new cultures, lifestyles, and stories, broadening my worldview. It reminds me that creativity often comes from stepping outside comfort zones and embracing diversity. Whether it’s exploring the local streets of Kerala or discovering places beyond, I see travel as a way to constantly learn, adapt, and grow.",
         
-        "Photography – For me, photography is more than a hobby; it’s a way of slowing down and observing the world closely. I enjoy capturing the beauty of everyday life — from fleeting expressions to landscapes and details often overlooked. Photography has taught me patience, observation, and storytelling, all of which influence the way I design and approach my work in technology."
+        "Photography – For me, photography is more than a hobby; it’s a way of slowing down and observing the world closely. As an introvert, it gives me a quiet space to express myself without words, letting my perspective speak through the lens. I enjoy capturing the beauty of everyday life — from fleeting expressions to landscapes and details often overlooked. Many of my favorite shots come from travel memories, where each picture becomes more than just an image — it tells a story of the place, the people, and the moment I experienced. Photography has taught me patience, observation, and storytelling, all of which influence the way I design and approach my work in technology."
     ],
 
 
