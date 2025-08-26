@@ -276,8 +276,8 @@ def contact_page():
     socials = {
         "email": "baluu1603@gmail.com",
         "linkedin": "https://www.linkedin.com/in/balagopal-m-1b9a7b226",
-        "github": "https://github.com/yourusername",
-        "resume": "/static/Balagopal_Resume.pdf",
+        "github": "https://github.com/addy16-darsh",
+        "resume": "/static/images/balagopal.pdf",
     }
     return render_template("contact.html", socials=socials)
 
