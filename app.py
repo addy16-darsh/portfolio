@@ -24,7 +24,7 @@ index_data = {
 journey_data = {
     "name": "Balagopal M",
     "sections": {
-        "intro": """Hi, I’m Balagopal M, a Python developer and AI/ML enthusiast from Kochi with a foundation in Electronics and Communication Engineering.
+        "intro": """Hi, I’m Balagopal M, a Python developer and AI/ML enthusiast originally from Mumbai and now based in Kochi, with a foundation in Electronics and Communication Engineering.
         I love creating intelligent, user-centric applications that bring the power of AI and machine learning into real-world use — solving problems, 
         enhancing efficiency, and creating meaningful impact.
         My journey in technology began with curiosity for electronics and coding, which gradually evolved into a passion for AI and full-stack development
@@ -42,6 +42,7 @@ journey_data = {
         },
 
         "journey": {
+            
     "current_role": "At King’s Labs, I design NLP pipelines for intent classification and entity extraction, and implement backend workflows to automate follow-ups and improve client communication. This role allows me to combine AI with full-stack development — something I truly enjoy. Before this role, I gained hands-on experience through diverse internships that helped me build a strong foundation across multiple domains:",
     "past_experience": [
         " Embedded Systems & Robotics (TechMaghi) – Gained hands-on experience in hardware-software integration.",
