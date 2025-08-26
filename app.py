@@ -9,14 +9,14 @@ index_data = {
     "intro_role": "Python Developer | AI & ML Enthusiast",
     "intro_subtext": "Explore my journey through this portfolio.",
     "portrait": "images/balu.jpg",
-    "resume": "Balagopal_Resume.pdf",
+    "resume": "/static/images/balagopal.pdf",
     "commands": {
         "about": "/journey",
         "skills": "/skills",
         "projects": "/projects",
         "experience": "/experience",
         "contact": "/contact",
-        "download": "/static/images/balagopal.pdf"
+        "view": "/static/images/balagopal.pdf"
     }
 }
 
