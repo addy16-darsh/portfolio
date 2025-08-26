@@ -60,7 +60,7 @@
     const output = document.getElementById('terminal-output');
     const message = document.getElementById('terminal-message');
     const commands = {{ data.commands|tojson }};
-    const helpMsg = 'Available commands: <span style="color:#ff6a3d">about</span>, <span style="color:#ff6a3d">skills</span>, <span style="color:#ff6a3d">projects</span>, <span style="color:#ff6a3d">experience</span>, <span style="color:#ff6a3d">contact</span>, <span style="color:#ff6a3d">download</span>, <span style="color:#ff6a3d">clear</span>. Type any command to navigate or download resume.';
+    const helpMsg = 'Available commands: <span style="color:#ff6a3d">about</span>, <span style="color:#ff6a3d">skills</span>, <span style="color:#ff6a3d">projects</span>, <span style="color:#ff6a3d">experience</span>, <span style="color:#ff6a3d">contact</span>, <span style="color:#ff6a3d">view</span>, <span style="color:#ff6a3d">clear</span>. Type any command to navigate or download resume.';
 
     input.addEventListener('keydown', function(e){
       if(e.key==='Enter'){
