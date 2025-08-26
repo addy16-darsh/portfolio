@@ -49,7 +49,7 @@ journey_data = {
         " Python Programming (CodeAlpha) – Strengthened programming and problem-solving foundations."
     ],
     "outro": "These experiences shaped my ability to work across domains, from low-level systems to high-level AI applications."
-}
+},
 
 
 "personality": {
