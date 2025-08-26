@@ -147,7 +147,7 @@
       <h2>Passions</h2>
       <p>{{ data.sections.personality.intro }}</p>
       <ul>
-        {% for item in data.sections.personality.items %}
+        {% for item in data.sections.personality["items"] %}
           <li>{{ item }}</li>
         {% endfor %}
       </ul>
