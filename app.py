@@ -137,7 +137,7 @@ experience_data = [
         "duration": "Aug 2022",
         "type": "Internship",
         "details": [
-            "Contributed as part of the teaching team delivering sessions to rural students.",
+            "Contributed as part of the teaching team delivering sessions to students.",
             "Helped improve mathematics problem-solving skills among students.",
             "Learned how to communicate technical knowledge in simple terms."
         ]
@@ -217,11 +217,11 @@ def projects_page():
             "title": "Executive CRM Chatbot",
             "video": "videos/bot.mp4",
             "details": [
-                "Developed and deployed an intelligent CRM chatbot using Rasa and Django to handle clients, inquiries, leads, orders, and follow-ups via natural conversations.",
+                "Developed and deployed an intelligent CRM chatbot using Rasa and Rasa SDK (Python) to handle clients, inquiries, leads, orders, and follow-ups via natural conversations.",
                 "Designed and curated extensive NLU training data (intents, entities, stories) to improve intent classification and entity extraction accuracy.",
                 "Implemented backend actions in Python with Django and MySQL for case-insensitive queries, client detail retrieval, inquiry tracking, and follow-up scheduling."
             ],
-            "stack": ["Python", "Rasa", "Django", "MySQL", "Tailwind", "VS Code"]
+            "stack": ["Python", "Rasa", "Rasa SDK", "MySQL", "VS Code"]
         },
         {
             "title": "Finance Tracker Application",
