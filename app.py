@@ -41,7 +41,7 @@ journey_data = {
             "Tools & Platforms": ["GitHub", "VS Code", "Android Studio", "Google Colab", "Render"]
         },
 
-        ""journey": {
+        "journey": {
     "current_role": "At King’s Labs, I design NLP pipelines for intent classification and entity extraction, and implement backend workflows to automate follow-ups and improve client communication. This role allows me to combine AI with full-stack development — something I truly enjoy.",
     "past experience": [
         " Embedded Systems & Robotics (TechMaghi) – Gained hands-on experience in hardware-software integration.",
