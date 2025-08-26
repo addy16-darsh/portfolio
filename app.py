@@ -24,45 +24,44 @@ index_data = {
 journey_data = {
     "name": "Balagopal M",
     "sections": {
-        "intro": """Hi, I'm Balagopal M, a Python developer and AI/ML enthusiast from Kochi with a foundation 
-                    in Electronics and Communication Engineering. I am passionate about building intelligent, 
-                    user-centric applications that leverage AI and machine learning to solve real-world problems, 
-                    enhance efficiency, and create meaningful impact. Beyond technology, I am an avid cricket lover, 
-                    travel enthusiast, and photography hobbyist.""",
-
-        "summary": """I am a Python developer and AI/ML enthusiast with expertise in designing and developing 
-                      full-stack applications and AI systems that address real-world challenges. 
-                      My skills span AI, Machine Learning, NLP, with a strong focus on computer vision and 
-                      conversational AI. Currently, I am building an NLP-powered CRM chatbot to automate
-                      client engagement, and I have also developed systems for deepfake detection and real-time
-                      human monitoring. I am passionate about creating technology that is powerful, ethical, explainable, 
-                      and secure, blending technical excellence with practical, user-centric solutions.""",
+        "intro": """Hi, I’m Balagopal M, a Python developer and AI/ML enthusiast from Kochi with a foundation in Electronics and Communication Engineering.
+        I love creating intelligent, user-centric applications that bring the power of AI and machine learning into real-world use — solving problems, 
+        enhancing efficiency, and creating meaningful impact.
+        My journey in technology began with curiosity for electronics and coding, which gradually evolved into a passion for AI and full-stack development
+        Over time, I’ve explored fields like computer vision, NLP, and conversational AI, building solutions that balance technical depth with practical usability.
+        Currently, I’m working at King’s Labs Innovation & Technology, where I’m developing an NLP-powered CRM chatbot using Rasa and Django. The system automates 
+        client interactions, manages data, and streamlines engagement, helping businesses improve efficiency and customer experience. Alongside this, I’ve worked 
+        on projects in deepfake detection and real-time human monitoring, where I integrate explainability and ethical AI practices to make systems more transparent
+        and trustworthy..""",
 
         "skills": {
             "Languages": ["Python", "Dart", "Java", "JavaScript", "SQL", "PHP"],
-            "AI/ML & NLP": ["TensorFlow", "PyTorch", "OpenCV", "YOLOv8", "Rasa", "NLTK"],
+            "AI/ML & NLP": ["TensorFlow", "PyTorch", "OpenCV", "YOLOv8", "Rasa"],
             "App & Web Development": ["Flutter", "Django", "Flask", "Firebase"],
             "Tools & Platforms": ["GitHub", "VS Code", "Android Studio", "Google Colab", "Render"]
         },
 
-        "journey": {
-            "current_role": """At King’s Labs Innovation & Technology, I’m developing a CRM chatbot using Rasa and Django. 
-                               I design NLP pipelines for intent classification and entity extraction and build backend 
-                               actions to handle client data, track inquiries, and automate follow-ups—enhancing customer 
-                               engagement and operational efficiency.""",
-            "past_experience": """I’ve gained hands-on experience through internships in Embedded Systems & Robotics (TechMaghi), 
-                                  Full-Stack Development (Unified Mentor), and Python Programming (CodeAlpha)."""
-        },
+        ""journey": {
+    "current_role": "At King’s Labs, I design NLP pipelines for intent classification and entity extraction, and implement backend workflows to automate follow-ups and improve client communication. This role allows me to combine AI with full-stack development — something I truly enjoy.",
+    "past experience": [
+        " Embedded Systems & Robotics (TechMaghi) – Gained hands-on experience in hardware-software integration.",
+        " Full-Stack Development (Unified Mentor) – Worked on building scalable web applications.",
+        " Python Programming (CodeAlpha) – Strengthened programming and problem-solving foundations."
+    ],
+    "outro": "These experiences shaped my ability to work across domains, from low-level systems to high-level AI applications."
+}
 
-        "personality": 
-            """I thrive on collaboration, clear communication, and teamwork, believing the best results come from 
-                        working together with focus and clarity. I am an avid learner and problem-solver, always seeking
-                        personal and professional growth. Beyond technology, I am passionate about sports, travel, and 
-                        photography. I have represented my district in U-16 and U-19 cricket tournaments, which strengthened 
-                        my discipline, leadership, and resilience. Traveling allows me to explore new cultures and perspectives, 
-                        while photography helps me capture and appreciate the beauty in everyday moments, fueling creativity 
-                        and inspiration in all areas of life.""",
-        "values": {}
+
+"personality": {
+    "intro": "I believe learning never stops, and my passions outside technology play a big role in who I am.",
+    "items": [
+        " Cricket – Represented district in U-16 and U-19 tournaments, which taught me discipline, leadership, and resilience. The game continues to inspire me with lessons on strategy and teamwork.",
+        " Travel – Exploring new places helps me understand diverse perspectives and cultures, fueling creativity and empathy.",
+        " Photography – Capturing everyday beauty through my lens nurtures patience, observation, and a sense of storytelling that often reflects in my work as well."
+    ],
+    "outro": "These interests not only balance my life but also bring unique dimensions to my creativity as a developer."
+}
+
     }
 }
 
