@@ -42,7 +42,7 @@ journey_data = {
         },
 
         "journey": {
-    "current_role": "At King’s Labs, I design NLP pipelines for intent classification and entity extraction, and implement backend workflows to automate follow-ups and improve client communication. This role allows me to combine AI with full-stack development — something I truly enjoy.",
+    "current_role": "At King’s Labs, I design NLP pipelines for intent classification and entity extraction, and implement backend workflows to automate follow-ups and improve client communication. This role allows me to combine AI with full-stack development — something I truly enjoy. Before this role, I gained hands-on experience through diverse internships that helped me build a strong foundation across multiple domains:",
     "past_experience": [
         " Embedded Systems & Robotics (TechMaghi) – Gained hands-on experience in hardware-software integration.",
         " Full-Stack Development (Unified Mentor) – Worked on building scalable web applications.",
