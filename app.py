@@ -81,6 +81,7 @@ journey_data = {
 
 
 }
+return render_template("about.html", data=journey_data)
 
 # ----------------- EXPERIENCE DATA -----------------
 experience_data = [
