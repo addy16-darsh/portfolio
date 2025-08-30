@@ -67,7 +67,7 @@ journey_data = {
     "outro": "These interests not only balance my life but also bring unique dimensions to my creativity as a developer."
 }
 
-    }
+    },
 "publications": [
     {
         "title": "Conversational AI with Rasa for Healthcare Chatbots",
