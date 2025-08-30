@@ -76,7 +76,7 @@ journey_data = {
                         This paper presents a DeepFake detection framework combining CNN models such as XceptionNet, EfficientNet, and MesoNet with explainable AI (Grad-CAM) techniques.
                         The approach enhances both detection accuracy and interpretability, providing transparency into model decisions. Evaluated on the Celeb-DF v2 dataset and internal datasets, 
                         the framework shows strong potential for combating misinformation risks on social media platforms.""",
-        "link": https://doi.org/10.1109/ACCESS65134.2025.11135663"
+        "link": "https://doi.org/10.1109/ACCESS65134.2025.11135663"
         ]
     }
 
