@@ -190,13 +190,14 @@
     <div id="publications" class="section">
       <h2>Publications</h2>
       <ul class="pub-list">
-        {% for pub in data.sections.publications %}
-          <li>
-            <strong>{{ pub.title }}</strong><br>
-            {{ pub.description }}  
-            <a href="{{ pub.link }}" target="_blank">[Read More]</a>
-          </li>
-        {% endfor %}
+       {% for pub in data.sections.publications.items %}
+  <li>
+    <strong>{{ pub.title }}</strong><br>
+    {{ pub.description }}
+    <a href="{{ pub.link }}" target="_blank">[Read More]</a>
+  </li>
+{% endfor %}
+
       </ul>
     </div>
   </div>
