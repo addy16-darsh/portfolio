@@ -91,6 +91,25 @@
       background-color: #e65c00;
     }
 
+    .pub-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .pub-list li {
+      margin-bottom: 15px;
+    }
+
+    .pub-list a {
+      color: #ff8533;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .pub-list a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 768px) {
       body { flex-direction: column; }
       .sidebar { width: 100%; height: auto; position: relative; }
@@ -108,6 +127,7 @@
       <a href="#journey">Journey</a>
       <a href="#personality">Passion</a>
       <a href="#values">Values & Goals</a>
+      <a href="#publications">Publications</a>
     </div>
     <a href="{{ url_for('index') }}" class="back-button">⬅ Back</a>
   </div>
@@ -164,6 +184,20 @@
         I strive to support and uplift those around me, valuing friendship, empathy, and collaboration as central pillars of both personal and professional life. 
         My long-term goal is to create technology that empowers people, strengthens trust in AI systems, and reflects integrity, compassion, and social responsibility.
       </p>
+    </div>
+
+    <!-- Publications -->
+    <div id="publications" class="section">
+      <h2>Publications</h2>
+      <ul class="pub-list">
+        {% for pub in data.sections.publications %}
+          <li>
+            <strong>{{ pub.title }}</strong><br>
+            {{ pub.description }}  
+            <a href="{{ pub.link }}" target="_blank">[Read More]</a>
+          </li>
+        {% endfor %}
+      </ul>
     </div>
   </div>
 </body>
