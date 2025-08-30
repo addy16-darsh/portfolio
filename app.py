@@ -68,6 +68,14 @@ journey_data = {
 }
 
     }
+"publications": [
+    {
+        "title": "Conversational AI with Rasa for Healthcare Chatbots",
+        "description": "Published in IEEE ICML 2023.",
+        "link": "https://example.com"
+    }
+]
+
 }
 
 # ----------------- EXPERIENCE DATA -----------------
