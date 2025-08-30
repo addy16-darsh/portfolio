@@ -68,20 +68,21 @@ journey_data = {
 }
 
     },
-"publications": [
-    {
-        "title": "DeepFake Detection Using CNN Models with Explainable AI Techniques",
-        "description": """Published by IEEE, 2025 4th International Conference on Advances in Computing, Communication, Embedded and Secure Systems (ACCESS).
-        This paper presents a DeepFake detection framework combining CNN models such as XceptionNet, EfficientNet, and MesoNet with explainable AI (Grad-CAM) techniques.
-        The approach enhances both detection accuracy and interpretability, providing transparency into model decisions. Evaluated on the Celeb-DF v2 dataset and internal datasets, 
-        the framework shows strong potential for combating misinformation risks on social media platforms.""",
-        "link": "https://doi.org/10.1109/ACCESS65134.2025.11135663"
-    }
-]
-
+"publications": {
+    "items": [
+        {
+            "title": "DeepFake Detection Using CNN Models with Explainable AI Techniques",
+            "description": """Published by IEEE, 2025 4th International Conference on Advances in Computing, Communication, Embedded and Secure Systems (ACCESS).
+            This paper presents a DeepFake detection framework combining CNN models such as XceptionNet, EfficientNet, and MesoNet with explainable AI (Grad-CAM) techniques.
+            The approach enhances both detection accuracy and interpretability, providing transparency into model decisions. Evaluated on the Celeb-DF v2 dataset and internal datasets, 
+            the framework shows strong potential for combating misinformation risks on social media platforms.""",
+            "link": "https://doi.org/10.1109/ACCESS65134.2025.11135663"
+        }
+    ]
+}
 
 }
-return render_template("about.html", data=journey_data)
+
 
 # ----------------- EXPERIENCE DATA -----------------
 experience_data = [
