@@ -10,7 +10,7 @@ index_data = {
     "intro_subtext": "Explore my journey through this portfolio.",
     "portrait": "images/balu.jpg",
     "commands": {
-        "about":      "/about",
+        "about":      "/journey",
         "skills":     "/skills",
         "projects":   "/projects",
         "experience": "/experience",
