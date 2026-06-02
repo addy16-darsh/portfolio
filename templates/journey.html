@@ -4,207 +4,99 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me | {{ data.name }}</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      background-color: #0d0d0d;
-      color: #f5f5f5;
-      scroll-behavior: smooth;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      width: 220px;
-      background-color: #1a1a1a;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px 0;
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-    }
-
-    .sidebar h2 {
-      text-align: center;
-      color: #ff6600;
-      margin-bottom: 20px;
-    }
-
-    .sidebar a {
-      padding: 12px 20px;
-      color: #f5f5f5;
-      text-decoration: none;
-      display: block;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .sidebar a:hover {
-      background-color: #ff6600;
-      color: #0d0d0d;
-    }
-
-    /* Content */
-    .content {
-      flex-grow: 1;
-      padding: 40px;
-      margin-left: 220px; 
-      overflow-y: auto;
-    }
-
-    .content h2 {
-      color: #ff6600;
-      margin-bottom: 15px;
-    }
-
-    .content p, .content blockquote, .content li {
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    blockquote {
-      border-left: 4px solid #ff6600;
-      padding-left: 15px;
-      color: #d9d9d9;
-      font-style: italic;
-      margin: 20px 0;
-    }
-
-    .back-button {
-      margin: 20px;
-      padding: 10px 15px;
-      background-color: #ff6600;
-      color: #0d0d0d;
-      text-decoration: none;
-      text-align: center;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s;
-      display: block;
-    }
-
-    .back-button:hover {
-      background-color: #e65c00;
-    }
-
-    .pub-list {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    .pub-list li {
-      margin-bottom: 15px;
-    }
-
-    .pub-list a {
-      color: #ff8533;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .pub-list a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      body { flex-direction: column; }
-      .sidebar { width: 100%; height: auto; position: relative; }
-      .content { margin-left: 0; padding: 20px; }
-    }
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div>
-      <h2>About Me</h2>
-      <a href="#intro">Introduction</a>
-      <a href="#skills">Skills & Tools</a>
-      <a href="#journey">Journey</a>
-      <a href="#personality">Passion</a>
-      <a href="#values">Values & Goals</a>
-      <a href="#publications">Publications</a>
-    </div>
-    <a href="{{ url_for('index') }}" class="back-button">⬅ Back</a>
-  </div>
+  <div class="journey-layout">
+    <!-- Sidebar -->
+    <nav class="journey-sidebar" aria-label="Page sections">
+      <div>
+        <h2>About Me</h2>
+        <a href="#intro">Introduction</a>
+        <a href="#skills">Skills &amp; Tools</a>
+        <a href="#journey">Journey</a>
+        <a href="#passion">Passions</a>
+        <a href="#values">Values &amp; Goals</a>
+        <a href="#publications">Publications</a>
+      </div>
+      <a href="{{ url_for('index') }}" class="back-btn" style="margin: 20px 16px 16px;">← Back</a>
+    </nav>
 
-  <!-- Content -->
-  <div class="content">
-    <!-- Intro -->
-    <div id="intro" class="section">
-      <h2>Introduction</h2>
-      <p>{{ data.sections.intro }}</p>
-    </div>
+    <!-- Main content -->
+    <main class="journey-content">
 
-    <!-- Skills -->
-    <div id="skills" class="section">
-      <h2>Skills & Tools</h2>
-      <ul>
-        {% for category, items in data.sections.skills.items() %}
-          <li><strong>{{ category }}:</strong> {{ items|join(', ') }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    
-    <!-- Journey -->
-    <div id="journey" class="section">
-      <h2>Journey</h2>
-      <p><strong>Current Role:</strong> {{ data.sections.journey.current_role }}</p>
-      <ul>
-        {% for exp in data.sections.journey.past_experience %}
-          <li>{{ exp }}</li>
-        {% endfor %}
-      </ul>
-      <p>{{ data.sections.journey.outro }}</p>
-    </div>
+      <!-- Introduction -->
+      <div id="intro" class="section">
+        <h2>Introduction</h2>
+        <p>{{ data.sections.intro }}</p>
+      </div>
 
-    <!-- Personality -->
-    <div id="personality" class="section">
-      <h2>Passions</h2>
-      <p>{{ data.sections.personality.intro }}</p>
-      <ul>
-        {% for item in data.sections.personality["items"] %}
-          <li>{{ item }}</li>
-        {% endfor %}
-      </ul>
-      <p>{{ data.sections.personality.outro }}</p>
-    </div>
+      <!-- Skills -->
+      <div id="skills" class="section">
+        <h2>Skills &amp; Tools</h2>
+        <ul>
+          {% for category, items in data.sections.skills.items() %}
+            <li><strong>{{ category }}:</strong> {{ items | join(', ') }}</li>
+          {% endfor %}
+        </ul>
+      </div>
 
-    <!-- Values -->
-    <div id="values" class="section">
-      <h2>Values & Goals</h2>
-      <p>I’m driven by innovation with purpose, guided by the philosophy of the verse:</p>
-      <blockquote>“Karmanye vadhikaraste, ma phaleshu kadachana” — You have the right to work, but not to the fruits of action.</blockquote>
-      <p>
-        This principle inspires me to work sincerely, focus on meaningful effort, and contribute without attachment to outcomes. 
-        I strive to support and uplift those around me, valuing friendship, empathy, and collaboration as central pillars of both personal and professional life. 
-        My long-term goal is to create technology that empowers people, strengthens trust in AI systems, and reflects integrity, compassion, and social responsibility.
-      </p>
-    </div>
+      <!-- Journey -->
+      <div id="journey" class="section">
+        <h2>Journey</h2>
+        <p><strong>Current Role:</strong> {{ data.sections.journey.current_role }}</p>
+        <ul>
+          {% for exp in data.sections.journey.past_experience %}
+            <li>{{ exp }}</li>
+          {% endfor %}
+        </ul>
+        <p>{{ data.sections.journey.outro }}</p>
+      </div>
 
-    <!-- Publications -->
-    <div id="publications" class="section">
-      <h2>Publications</h2>
-      <ul class="pub-list">
-  <li>
-    <strong>DeepFake Detection Using CNN Models with Explainable AI Techniques</strong><br>
-    Published by IEEE, 2025 4th International Conference on Advances in Computing, Communication, Embedded and Secure Systems (ACCESS).  
-    This paper presents a DeepFake detection framework combining CNN models such as XceptionNet, EfficientNet, and MesoNet with explainable AI (Grad-CAM) techniques.  
-    The approach enhances both detection accuracy and interpretability, providing transparency into model decisions.  
-    Evaluated on the Celeb-DF v2 dataset and internal datasets, the framework shows strong potential for combating misinformation risks on social media platforms.  
-    <a href="https://doi.org/10.1109/ACCESS65134.2025.11135663" target="_blank">[Read More]</a>
-  </li>
-</ul>
+      <!-- Passions -->
+      <div id="passion" class="section">
+        <h2>Passions</h2>
+        <p>{{ data.sections.personality.intro }}</p>
+        <ul>
+          {% for item in data.sections.personality.items %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+        <p>{{ data.sections.personality.outro }}</p>
+      </div>
 
-    </div>
-  </div>
-</body>
-</html>
-    </div>
+      <!-- Values -->
+      <div id="values" class="section">
+        <h2>Values &amp; Goals</h2>
+        <p>I'm driven by innovation with purpose, guided by the philosophy:</p>
+        <blockquote>
+          "Karmanye vadhikaraste, ma phaleshu kadachana" — You have the right to work, but not to the fruits of action.
+        </blockquote>
+        <p>
+          This principle inspires me to work sincerely, focus on meaningful effort, and contribute without attachment to outcomes.
+          I strive to support and uplift those around me, valuing friendship, empathy, and collaboration as central pillars of both
+          personal and professional life. My long-term goal is to create technology that empowers people, strengthens trust in AI
+          systems, and reflects integrity, compassion, and social responsibility.
+        </p>
+      </div>
+
+      <!-- Publications -->
+      <div id="publications" class="section">
+        <h2>Publications</h2>
+        <ul class="pub-list">
+          {% for pub in data.sections.publications %}
+            <li>
+              <strong>{{ pub.title }}</strong><br>
+              <span style="color:var(--muted); font-size:.9rem;">{{ pub.venue }}</span><br>
+              <p style="margin:.6rem 0;">{{ pub.description }}</p>
+              <a href="{{ pub.doi }}" target="_blank" rel="noopener">[Read More →]</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </main>
   </div>
 </body>
 </html>
