@@ -6,52 +6,102 @@
   <title>Contact | Balagopal Portfolio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body, html {
-      height: 100%; margin: 0; padding: 0;
-      background: var(--bg);
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: #000;
       font-family: 'Inter', Arial, sans-serif;
-      color: var(--text);
+      color: #fff;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
+      overflow: hidden;
     }
-    #contact { max-width: 700px; padding: 2rem; }
-    #contact p.muted { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.2rem; }
+
+    #contact {
+      text-align: center;
+      max-width: 700px;
+      padding: 2rem;
+    }
+
+    #contact h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5em;
+    }
+
+    #contact p.muted {
+      font-size: 1.1rem;
+      color: #b2eaff;
+      margin-bottom: 2em;
+      opacity: 0.85;
+    }
+
+    /* Icon buttons */
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .social-links a {
+      width: 55px;
+      height: 55px;
+      background: #1a1a1a;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 1.4rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #ff6a3d;
+      transform: translateY(-4px);
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 2rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #ff6a3d;
+      border: 2px solid #ff6a3d;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #ff6a3d;
+      color: #fff;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
-  <canvas id="particles"></canvas>
-
   <section id="contact">
     <a class="back-btn" href="{{ url_for('index') }}">← Back to Home</a>
-    <h2>Let's Connect</h2>
-    <p class="muted">
-      Looking forward to collaborating on impactful projects and exciting opportunities in
-      Application Development, Software Engineering, or Machine Learning.
-    </p>
-
+    <h2>Let’s Connect</h2>
+    <p class="muted">Looking forward to collaborating on impactful projects and exciting opportunities in Application Development, Software Engineering, or Machine Learning.</p>
+    
+    <!-- Social Media Logos -->
     <div class="social-links">
-      <a href="mailto:{{ socials.email }}" title="Email" aria-label="Send email">
-        <i class="fas fa-envelope"></i>
-      </a>
-      <a href="{{ socials.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn profile">
-        <i class="fab fa-linkedin-in"></i>
-      </a>
-      <a href="{{ socials.github }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub profile">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="{{ socials.resume }}" download title="Download Résumé" aria-label="Download résumé PDF">
-        <i class="fas fa-file-pdf"></i>
-      </a>
+      <a href="mailto:baluu1603@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/balagopal-m-1b9a7b226" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="{{ url_for('static', filename='images/balagopal.pdf') }}" download><i class="fas fa-file-pdf"></i></a>
     </div>
   </section>
-
-  <script src="{{ url_for('static', filename='js/matrix.js') }}"></script>
-  <script src="{{ url_for('static', filename='js/particles.js') }}"></script>
 </body>
 </html>

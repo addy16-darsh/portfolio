@@ -5,196 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Balagopal | Portfolio</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body, html {
-      height: 100%; margin: 0; padding: 0;
-      background: #000;
-      font-family: 'Inter', Arial, sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
-    .split-container { display: flex; height: 100vh; width: 100vw; }
-    .split-left {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 4vw;
-      min-width: 0;
-    }
-    .split-right {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-      background: #000;
-    }
-    .portrait-img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-      /* subtle fade at left edge */
-      mask-image: linear-gradient(to right, transparent 0%, black 20%);
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
-    }
-    .tagline {
-      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
-      font-weight: 800;
-      margin-bottom: .7em;
-      line-height: 1.2;
-      color: #e6faff;
-      letter-spacing: .5px;
-    }
-    .intro-name {
-      font-size: clamp(1rem, 1.4vw, 1.25rem);
-      font-weight: 700;
-      color: #e6faff;
-      margin-bottom: .3em;
-    }
-    .intro-role {
-      font-size: clamp(1rem, 1.3vw, 1.2rem);
-      font-weight: 700;
-      color: var(--cyan);
-      margin-bottom: 1em;
-    }
-    .intro-subtext {
-      font-size: clamp(.9rem, 1vw, 1rem);
-      color: var(--muted);
-      margin-bottom: 2rem;
-      opacity: .85;
-    }
-
-    /* ── Terminal ── */
-    .terminal-section {
-      width: 100%;
-      max-width: 460px;
-      background: rgba(11, 15, 20, .95);
-      border: 1px solid rgba(0, 255, 255, .22);
-      border-radius: 14px;
-      box-shadow: 0 0 32px rgba(0, 255, 255, .10);
-      padding: 1.8rem 1.6rem 1.4rem;
-      font-family: 'Fira Code', 'Consolas', monospace;
-      color: #e0e0e0;
-      font-size: 1rem;
-    }
-    .terminal-dots { display: flex; gap: 6px; margin-bottom: 1rem; }
-    .terminal-dots span {
-      width: 12px; height: 12px;
-      border-radius: 50%;
-    }
-    .terminal-dots .dot-red    { background: #ff5f57; }
-    .terminal-dots .dot-yellow { background: #ffbd2e; }
-    .terminal-dots .dot-green  { background: #28c840; }
-    .terminal-label {
-      color: var(--muted);
-      font-size: .88rem;
-      margin-bottom: 1rem;
-    }
-    #terminal-output { min-height: 1.4em; margin-bottom: .5rem; }
-    .terminal-input-row {
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-    }
-    .terminal-prompt { color: var(--cyan); font-weight: 600; margin-right: .5em; }
-    #terminal-input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #00ffff;
-      font-family: inherit;
-      font-size: 1rem;
-      width: 220px;
-      caret-color: var(--cyan);
-    }
-    .terminal-hint {
-      font-size: .85rem;
-      color: var(--muted);
-      margin-top: .9rem;
-      opacity: .85;
-    }
-    .terminal-hint .cmd { color: var(--cyan); font-weight: 600; }
-    #terminal-message { margin-top: .6rem; font-size: .9rem; }
-    .terminal-help  { color: var(--muted); }
-    .terminal-error { color: #ff6b6b; }
-    .terminal-ok    { color: var(--cyan); }
-
-    @media (max-width: 800px) {
-      .split-container { flex-direction: column; overflow-y: auto; }
-      .split-right { height: 40vh; flex: none; }
-      .portrait-img { mask-image: linear-gradient(to bottom, black 70%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%); }
-      .split-left { padding: 2rem 1.2rem 2rem; overflow-y: auto; }
-      body, html { overflow: auto; }
-    }
+    body, html {height:100%;margin:0;padding:0;background:#000;font-family:'Inter', Arial,sans-serif;color:#fff;overflow:hidden;}
+    .split-container {display:flex;height:100vh;width:100vw;}
+    .split-left, .split-right {flex:1;display:flex;align-items:center;justify-content:center;min-width:0;}
+    .split-left {flex-direction:column;align-items:flex-start;padding:0 3vw;}
+    .tagline {font-size:2.2rem;font-weight:800;margin-bottom:0.8em;line-height:1.18;letter-spacing:1px;color:#fff;}
+    .subheading {font-size:1.2rem;font-weight:700;margin-bottom:0.7em;color:#fff;}
+    .intro-role {font-size:1.2rem;font-weight:700;color:#ff6a3d;margin-bottom:1.2em;}
+    .intro-subtext {font-size:1rem;color:#b2eaff;margin-bottom:2.2em;opacity:0.8;}
+    .split-right {padding:0;margin:0;width:100%;height:100vh;justify-content:flex-end;align-items:stretch;background:#000;position:relative;overflow:hidden;}
+    .portrait-img {width:100%;height:100%;object-fit:cover;display:block;}
+    .terminal-section {width:100%;max-width:480px;background:#101010;border-radius:14px;box-shadow:0 0 32px #ff6a3d22;padding:2.5rem 2rem;font-family:'Fira Code','Consolas',monospace;color:#e0e0e0;font-size:1.18rem;position:relative;min-height:220px;margin:2.5rem 0;}
+    .terminal-label {color:#b2eaff;font-weight:600;margin-bottom:1.2rem;font-size:1.1rem;}
+    .terminal-input-row {display:flex;align-items:center;font-size:1.18rem;font-family:'Fira Code','Consolas',monospace;}
+    .terminal-prompt {color:#b2eaff;font-weight:600;margin-right:0.5em;}
+    .terminal-help { color:#b2eaff;font-size:1rem;margin-top:1.2em;font-weight:500;letter-spacing:0.5px; }
+    .terminal-error { color:#ff6a3d;font-size:1rem;margin-top:1.2em;font-weight:600;letter-spacing:0.5px; }
+    @keyframes blink {0%,50%{opacity:1;}51%,100%{opacity:0;}}
+    @keyframes fadeInInput {from{opacity:0;}to{opacity:1;}}
   </style>
 </head>
 <body>
   <div class="split-container">
     <div class="split-left">
-      <p class="tagline">{{ data.tagline }}</p>
-      <p class="intro-name">{{ data.intro_name }}</p>
-      <p class="intro-role">{{ data.intro_role }}</p>
-      <p class="intro-subtext">{{ data.intro_subtext }}</p>
+      <div class="tagline">{{ data.tagline }}</div>
+      <div class="subheading">{{ data.intro_name }}</div>
+      <div class="intro-role">{{ data.intro_role }}</div>
+      <div class="intro-subtext">{{ data.intro_subtext }}</div>
 
+      <!-- Terminal Section -->
       <div class="terminal-section">
-        <div class="terminal-dots">
-          <span class="dot-red"></span>
-          <span class="dot-yellow"></span>
-          <span class="dot-green"></span>
-        </div>
-        <div class="terminal-label">portfolio ~ bash</div>
-        <div id="terminal-output"></div>
+        <div class="terminal-label">Type a command and press Enter:</div>
+        <div id="terminal-output" class="terminal-output" style="min-height:1.5em;"></div>
         <div class="terminal-input-row">
-          <span class="terminal-prompt">$&nbsp;</span>
-          <input id="terminal-input" autocomplete="off" autofocus spellcheck="false" aria-label="Terminal command input">
+          <span class="terminal-prompt">$</span>
+          <input id="terminal-input" class="terminal-input" autocomplete="off" autofocus style="background:transparent;border:none;outline:none;color:#ff6a3d;width:220px;">
         </div>
-        <p class="terminal-hint">Type <span class="cmd">help</span> for all commands.</p>
+        <div style="color:#b2eaff;font-size:0.98rem;margin-top:1.1em;opacity:0.85;">
+          Type <span style="color:#ff6a3d;font-weight:600;">help</span> to display all available commands.
+        </div>
         <div id="terminal-message"></div>
       </div>
     </div>
 
     <div class="split-right">
-      <img src="{{ url_for('static', filename=data.portrait) }}" alt="Balagopal portrait" class="portrait-img">
+      <img src="{{ url_for('static', filename=data.portrait) }}" alt="Portrait" class="portrait-img">
     </div>
   </div>
 
   <script>
-    const input   = document.getElementById('terminal-input');
-    const output  = document.getElementById('terminal-output');
+    const input = document.getElementById('terminal-input');
+    const output = document.getElementById('terminal-output');
     const message = document.getElementById('terminal-message');
-    const commands = {{ data.commands | tojson }};
+    const commands = {{ data.commands|tojson }};
+    const helpMsg = 'Available commands: <span style="color:#ff6a3d">about</span>, <span style="color:#ff6a3d">skills</span>, <span style="color:#ff6a3d">projects</span>, <span style="color:#ff6a3d">experience</span>, <span style="color:#ff6a3d">contact</span>, <span style="color:#ff6a3d">view</span>, <span style="color:#ff6a3d">clear</span>. Type any command to navigate or download resume.';
 
-    const helpText = `Available commands: `
-      + Object.keys(commands).map(c => `<span class="cmd">${c}</span>`).join(', ')
-      + `, <span class="cmd">help</span>, <span class="cmd">clear</span>`;
-
-    input.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter') return;
-      const cmd = input.value.trim().toLowerCase();
-      input.value = '';
-
-      output.innerHTML = `<span style="color:var(--cyan);">$ ${cmd}</span>`;
-      message.innerHTML = '';
-
-      if (cmd === 'help') {
-        message.innerHTML = `<div class="terminal-help">${helpText}</div>`;
-      } else if (cmd === 'clear') {
-        output.innerHTML = '';
-      } else if (cmd === '') {
-        /* do nothing */
-      } else if (cmd === 'view') {
-        // Open resume PDF in new tab
-        message.innerHTML = `<div class="terminal-ok">Opening résumé…</div>`;
-        window.open(commands.view, '_blank');
-      } else if (cmd in commands) {
-        message.innerHTML = `<div class="terminal-ok">Navigating to ${cmd}…</div>`;
-        setTimeout(() => {
-          document.body.style.transition = 'opacity .35s';
-          document.body.style.opacity = '0.15';
-          setTimeout(() => { window.location.href = commands[cmd]; }, 350);
-        }, 120);
-      } else {
-        message.innerHTML = `<div class="terminal-error">Command not found: <em>${cmd}</em>. Type <span class="cmd">help</span>.</div>`;
+    input.addEventListener('keydown', function(e){
+      if(e.key==='Enter'){
+        const cmd=input.value.trim().toLowerCase();
+        output.innerHTML=`<span style="color:#ff6a3d;">$ ${cmd}</span>`;
+        if(cmd in commands){
+          message.innerHTML='';
+          if(cmd==='download'){ window.open(commands.download,'_blank'); }
+          else { setTimeout(()=>{document.body.style.opacity=0.2;setTimeout(()=>{window.location.href=commands[cmd];},350);},250);}
+        }else if(cmd==='help'){ message.innerHTML=`<div class="terminal-help">${helpMsg}</div>`; }
+        else if(cmd==='clear'){ output.innerHTML=''; message.innerHTML=''; }
+        else if(cmd===''){ message.innerHTML=''; }
+        else{ message.innerHTML=`<div class="terminal-error">Command not found. Type <span style="color:#ff6a3d">help</span>.</div>`; }
+        input.value='';
       }
     });
   </script>
