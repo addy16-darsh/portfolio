@@ -10,7 +10,7 @@ index_data = {
     "intro_subtext": "Explore my journey through this portfolio.",
     "portrait": "images/balu.jpg",
     "commands": {
-        "about":      "/journey",
+        "about":      "/about",
         "skills":     "/skills",
         "projects":   "/projects",
         "experience": "/experience",
@@ -427,6 +427,10 @@ socials_data = {
 @app.route("/")
 def index():
     return render_template("index.html", data=index_data)
+
+@app.route("/about")
+def about_page():
+    return render_template("about.html", data=journey_data)
 
 @app.route("/journey")
 def journey_page():
